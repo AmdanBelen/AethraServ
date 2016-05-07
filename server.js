@@ -8,6 +8,7 @@ var express = require('express')
 
 
 var app = express();
+var port = process.env.OPENSHIFT_NODEJS_PORT  || 8080;
 
 function compile(str, path) {
   return stylus(str)
@@ -30,4 +31,5 @@ app.get('/', function (req, res) {
   { title : 'Home' }
   )
 });
-app.listen(80);
+console.log(port);
+app.listen(port);

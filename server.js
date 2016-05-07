@@ -8,7 +8,6 @@ var express = require('express')
 
 
 var app = express();
-var port = process.env.OPENSHIFT_NODEJS_PORT || 80;
 
 function compile(str, path) {
   return stylus(str)

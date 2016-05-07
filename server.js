@@ -1,52 +1,158 @@
+#!/bin/env node
+
+var AppContainer = function () {
+  //  Scope.
+  var self = this;
+  /*  ================================================================  */
+  /*  Helper functions.                                                 */
+  /*  ================================================================  */
+
+  /**
+   *  Set up server IP address and port # using env variables/defaults.
+   */
+  self.setupVariables = function () {
+    //  Set the environment variables we need.
+    self.ipaddress = process.env.OPENSHIFT_NODEJS_IP;
+    self.port = process.env.OPENSHIFT_NODEJS_PORT || 8080;
+
+    if (typeof self.ipaddress === "undefined") {
+      //  Log errors on OpenShift but continue w/ 127.0.0.1 - this
+      //  allows us to run/test the app locally.
+      console.warn('No OPENSHIFT_NODEJS_IP var, using 127.0.0.1');
+      self.ipaddress = "127.0.0.1";
+    }
+  };
+
+  /**
+   *  terminator === the termination handler
+   *  Terminate server on receipt of the specified signal.
+   *  @param {string} sig  Signal to terminate on.
+   */
+  self.terminator = function (sig) {
+    if (typeof sig === "string") {
+      console.log('%s: Received %s - terminating sample app ...',
+        Date(Date.now()), sig);
+      process.exit(1);
+    }
+    console.log('%s: Node server stopped.', Date(Date.now()));
+  };
+
+
+  /**
+   *  Setup termination handlers (for exit and a list of signals).
+   */
+  self.setupTerminationHandlers = function () {
+    //  Process on exit and signals.
+    process.on('exit', function () {
+      self.terminator();
+    });
+
+    // Removed 'SIGPIPE' from the list - bugz 852598.
+    ['SIGHUP', 'SIGINT', 'SIGQUIT', 'SIGILL', 'SIGTRAP', 'SIGABRT',
+      'SIGBUS', 'SIGFPE', 'SIGUSR1', 'SIGSEGV', 'SIGUSR2', 'SIGTERM'
+    ].forEach(function (element, index, array) {
+        process.on(element, function () {
+          self.terminator(element);
+        });
+      });
+  };
+
+  /**
+   *  Initializes the sample application.
+   */
+  self.initialize = function () {
+    self.setupVariables();
+    self.setupTerminationHandlers();
+  };
+
+
+  self.setupServer = function () {
+
+    /**
+     * Module dependencies.
+     */
+    var app = require('./app');
+    var http = require('http');
+    /**
+     * Get port from environment and store in Express.
+     */
+    var port = normalizePort(self.port);
+    /**
+     * Create HTTP server.
+     */
+    var server = http.createServer(app);
+    /**
+     * Listen on provided port, on all network interfaces.
+     */
+    server.listen(self.port, self.ipaddress, function () {
+      console.log('%s: Node server started on %s:%d ...',
+        Date(Date.now()), self.ipaddress, self.port);
+    });
+    server.on('error', onError);
+    server.on('listening', onListening);
+
+    /**
+     * Normalize a port into a number, string, or false.
+     */
+    function normalizePort(val) {
+      var port = parseInt(val, 10);
+
+      if (isNaN(port)) {
+        // named pipe
+        return val;
+      }
+
+      if (port >= 0) {
+        // port number
+        return port;
+      }
+
+      return false;
+    }
+
+    /**
+     * Event listener for HTTP server "error" event.
+     */
+
+    function onError(error) {
+      if (error.syscall !== 'listen') {
+        throw error;
+      }
+
+      var bind = typeof port === 'string'
+        ? 'Pipe ' + port
+        : 'Port ' + port;
+
+      // handle specific listen errors with friendly messages
+      switch (error.code) {
+        case 'EACCES':
+          console.error(bind + ' requires elevated privileges');
+          process.exit(1);
+          break;
+        case 'EADDRINUSE':
+          console.error(bind + ' is already in use');
+          process.exit(1);
+          break;
+        default:
+          throw error;
+      }
+    }
+
+    /**
+     * Event listener for HTTP server "listening" event.
+     */
+
+    function onListening() {
+      var addr = server.address();
+      console.log('Server on port : ' + addr.port);
+    }
+  };
+};
+
 
 /**
- * Module dependencies.
+ *  main():  Main code.
  */
-
-var express = require('express'),
-  routes = require('./routes'),
-  user = require('./routes/user'),
-  http = require('http'),
-  path = require('path');
-
-var app = express();
-
-app.configure(function(){
-  app.set('port', process.env.OPENSHIFT_NODEJS_PORT || 3000);
-  app.set('views', __dirname + '/views');
-  app.set('view engine', 'jade');
-  app.use(express.favicon());
-  app.use(express.logger('dev'));
-  app.use(express.bodyParser());
-  app.use(express.methodOverride());
-  app.use(app.router);
-  app.use(require('stylus').middleware(__dirname + '/public'));
-  app.use(express.static(path.join(__dirname, 'public')));
-});
-
-app.configure('development', function(){
-  app.use(express.errorHandler());
-});
-
-app.get('/', function(req, res){
-  res.render('index', {
-    title: 'Home'
-  });
-});
-
-app.get('/about', function(req, res){
-  res.render('about', {
-    title: 'About'
-  });
-});
-
-app.get('/contact', function(req, res){
-  res.render('contact', {
-    title: 'Contact'
-  });
-});
-
-http.createServer(app).listen(app.get('port'), function(){
-  console.log("Express server listening on port " + app.get('port'));
-});
-
+var zapp = new AppContainer();
+zapp.initialize();
+zapp.setupServer();

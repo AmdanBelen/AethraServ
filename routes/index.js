@@ -1,8 +1,12 @@
-
-/*
- * GET home page.
+/**
+ * Created by atulr on 05/07/15.
  */
+var express = require('express');
+var router = express.Router();
 
-exports.index = function(req, res){
-  res.render('index', { title: 'Express' });
-};
+/* GET home page. */
+router.get('/', function(req, res, next) {
+  res.send('index :D');
+});
+
+module.exports = router;

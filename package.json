@@ -3,14 +3,17 @@
   "version": "0.0.1",
   "private": "true",
   "main": "app.js",
-  "scripts":{
-    "start":"app.js"
-    },
+  "scripts": {
+    "start": "app.js"
+  },
   "dependencies": {
+    "body-parser": "^1.15.1",
     "express": ">=4.0",
-    "nib": "^1.0.4",
-    "stylus": "^0.49.1",
-    "pug-loader":"<=1.0.2",
-    "pug": "<=2.0.0-alpha6"
+    "morgan": "^1.7.0",
+    "nib": "^1.1.0",
+    "pug": "<=2.0.0-alpha6",
+    "pug-loader": "<=1.0.2",
+    "serve-static": "^1.10.2",
+    "stylus": "^0.54.5"
   }
 }

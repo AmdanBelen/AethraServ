@@ -1,10 +1,10 @@
 {
   "name": "Aethra",
-  "version": "0.0.1",
-  "private": "true",
-  "main": "app.js",
+  "version": "0.0.2",
+  "private": "false",
+  "main": "server.js",
   "scripts": {
-    "start": "app.js"
+    "start": "supervisor server.js"
   },
   "dependencies": {
     "body-parser": "^1.15.1",

@@ -1,5 +1,5 @@
 {
-  "name": "MySite",
+  "name": "Aethra",
   "version": "0.0.1",
   "private": "true",
   "main": "app.js",
@@ -7,6 +7,6 @@
     "express": "3.0.0alpha4",
     "nib": "^1.0.4",
     "stylus": "^0.49.1",
-    "jade": "^1.7.0"
+    "pug": "2.0.0-alpha6"
   }
 }

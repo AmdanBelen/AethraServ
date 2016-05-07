@@ -30,4 +30,4 @@ app.get('/', function (req, res) {
   )
 })
 
-app.listen(80)
+app.listen(process.env.OPENSHIFT_NODEJS_PORT || 8080);

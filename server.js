@@ -1,35 +1,52 @@
-/*
- * Module dependencies
- */
-var express = require('express')
-  , stylus = require('stylus')
-  , nib = require('nib')
-  , morgan = require('morgan')
 
+/**
+ * Module dependencies.
+ */
+
+var express = require('express'),
+  routes = require('./routes'),
+  user = require('./routes/user'),
+  http = require('http'),
+  path = require('path');
 
 var app = express();
-var port = process.env.OPENSHIFT_NODEJS_PORT  || 8080;
 
-function compile(str, path) {
-  return stylus(str)
-    .set('filename', path)
-    .use(nib());
-}
-
-app.set('views', __dirname + '/views')
-app.set('view engine', 'pug')
-app.use(morgan('dev'))
-app.use(stylus.middleware(
-  { src: __dirname + '/public'
-  , compile: compile
-  }
-));
-app.use(express.static(__dirname + '/public'))
-
-app.get('/', function (req, res) {
-  res.render('index',
-  { title : 'Home' }
-  )
+app.configure(function(){
+  app.set('port', process.env.OPENSHIFT_NODEJS_PORT || 3000);
+  app.set('views', __dirname + '/views');
+  app.set('view engine', 'jade');
+  app.use(express.favicon());
+  app.use(express.logger('dev'));
+  app.use(express.bodyParser());
+  app.use(express.methodOverride());
+  app.use(app.router);
+  app.use(require('stylus').middleware(__dirname + '/public'));
+  app.use(express.static(path.join(__dirname, 'public')));
 });
-console.log(port);
-app.listen(port);
+
+app.configure('development', function(){
+  app.use(express.errorHandler());
+});
+
+app.get('/', function(req, res){
+  res.render('index', {
+    title: 'Home'
+  });
+});
+
+app.get('/about', function(req, res){
+  res.render('about', {
+    title: 'About'
+  });
+});
+
+app.get('/contact', function(req, res){
+  res.render('contact', {
+    title: 'Contact'
+  });
+});
+
+http.createServer(app).listen(app.get('port'), function(){
+  console.log("Express server listening on port " + app.get('port'));
+});
+

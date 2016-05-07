@@ -1,18 +1,17 @@
 {
-  "name": "Aethra",
-  "version": "0.0.2",
-  "private": "false",
-  "main": "server.js",
+  "name": "express_example",
+  "version": "0.0.1",
+  "private": true,
+  "main":"server.js",
   "scripts": {
-	"start": "node server.js"
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": "0.10.x"
   },
   "dependencies": {
-    "body-parser": "^1.15.1",
-    "express": ">=4.0",
-    "morgan": "^1.7.0",
-    "nib": "^1.1.0",
-    "pug": "^2.0.0-alpha6",
-    "serve-static": "^1.10.2",
-    "stylus": "^0.54.5"
+    "express": "3.1.0",
+    "jade": "0.28.1",
+    "stylus": "0.32.1"
   }
 }

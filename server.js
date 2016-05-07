@@ -23,13 +23,12 @@ app.use(stylus.middleware(
   { src: __dirname + '/public'
   , compile: compile
   }
-))
+));
 app.use(express.static(__dirname + '/public'))
 
 app.get('/', function (req, res) {
   res.render('index',
   { title : 'Home' }
   )
-})
-console.log("Running on port: "+port);
-app.listen(port);
+});
+app.listen(80);

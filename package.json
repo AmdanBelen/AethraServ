@@ -3,7 +3,9 @@
   "version": "0.0.2",
   "private": "false",
   "main": "server.js",
-  "scripts":{"start":"node server.js"},
+  "scripts": {
+	"start": "node server.js"
+  },
   "dependencies": {
     "body-parser": "^1.15.1",
     "express": ">=4.0",

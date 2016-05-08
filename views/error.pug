@@ -1,6 +1,15 @@
+doctype html
 html
   head
-    title= status
+    link(rel='stylesheet', href='/index.css')
+    link(rel='shortcut icon', href='/favicon.png', type='image/x-icon') 
+    title= title
   body
-    h1= message
-    h2= status
+    .header
+      h1.page-title= status
+    div.split
+    
+    .main-content= message
+
+    .footer
+      p 2016 Aethra. By Soramdan

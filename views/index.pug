@@ -1,0 +1,16 @@
+doctype html
+html
+  head
+    link(rel='stylesheet', href='/index.css')
+    link(rel='shortcut icon', href='/favicon.png', type='image/x-icon') 
+    title= title
+  body
+    .header
+      h1.page-title= title
+    div.split
+    
+    .main-content
+      block content
+
+    .footer
+      p 2016 Aethra. By Soramdan

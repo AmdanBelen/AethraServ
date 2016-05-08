@@ -11,11 +11,14 @@
     "debug": "^2.2.0",
     "express": "^4.13.0",
     "morgan": "^1.6.0",
-    "passport": "^0.2.2"
+    "nib": "^1.1.0",
+    "passport": "^0.2.2",
+    "pug": "^2.0.0-alpha6",
+    "stylus": "^0.54.5"
   },
   "private": true,
   "main": "server.js",
-  "scripts":{
-	"start":"node server.js"
+  "scripts": {
+    "start": "node server.js"
   }
 }

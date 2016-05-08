@@ -1,0 +1,57 @@
+ @font-face
+   font-family Archive
+   font-style normal
+   src url(/fonts/Archive.otf)
+
+ @font-face
+   font-family Chrome
+   font-style normal
+   src url(/fonts/Chrome-Black.ttf)
+
+dgrey = rgb(36, 36, 42)
+lgrey = rgb(236,238,242)
+dblue = rgb(12, 68, 98)
+lblue = rgb(112,216,252)
+
+*
+  margin 0
+  padding 0
+  box-sizing border-box
+
+body
+  font-family 'Archive', monospace
+
+.header
+  background-color dblue
+  background-position center
+
+  .page-title
+    font-weight 800
+    font-size 80px
+    text-align center
+    padding 100px
+    text-transform uppercase
+    color lgrey
+
+.split
+  background dgrey
+  width 100%
+  height 10px
+
+.main-content
+  margin 50px auto
+  max-width 600px
+
+  p
+    line-height 1.6
+    margin-bottom 1.7em
+
+.footer
+  margin 50px auto
+  max-width 600px
+  border-top 1px solid dgrey
+  padding 20px 0
+
+  p
+    color dgrey
+    font-size 12px

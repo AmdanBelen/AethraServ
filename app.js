@@ -34,7 +34,12 @@ app.get('/', function (req, res) {
   res.render('homepage', { title: 'Aethra', message: 'Aethra'});
 });
 
-
+app.get('/test/:num', function(req, res) {
+  res.send("Num is set to " + req.params.num);
+});
+app.get('/test', function(req, res) {
+  res.send("Num is set to " + req.query.num);
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

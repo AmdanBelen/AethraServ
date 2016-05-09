@@ -31,19 +31,23 @@ app.set('views', './views');
 app.set('view engine', 'pug');
 
 app.get('/', function (req, res) {
-  res.render('homepage', { title: '', message: 'Aethra'});
+  res.render('home', { title: '', message: 'Aethra'});
 });
 
 app.get('/me', function (req, res) {
   res.render('me', { title: 'Me'});
 });
 
+app.get('/article', function (req, res) {
+  res.render('article', { title: 'Article'});
+});
+
 app.get('/api/:cmd', function(req, res) {
-  res.send("Api request : " + req.params.cmd +"(key: "+req.query.key+")");// ip/api/###?key=##
-  //res.json({key:req.query.key});
+  //res.send("Api request : " + req.params.cmd +"(key: "+req.query.key+")");// ip/api/###?key=##
+  res.json({cmd:req.params.cmd,key:req.query.key});
 });
 app.get('/api', function(req, res) {
-  res.send("WIP");
+  res.json({Error:"Not available"});
 });
 
 // catch 404 and forward to error handler

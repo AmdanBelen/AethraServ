@@ -1,16 +1,13 @@
 doctype html
 html
-  head
-    link(rel='stylesheet', href='/index.css')
-    link(rel='shortcut icon', href='/favicon.png', type='image/x-icon') 
-    title= title
-  body
-    .header
-      h1.page-title= title
-    div.split
-    
-    .main-content
+  include head
+body
+    include simple_header
+    section#one.main.style1.special
+      .container
+        header.major
+          h2 Work in Progres ...
+        p= "Website is being built, it may take some time. Sorry for making you wait."
       block content
 
-    .footer
-      p 2016 Aethra. By Soramdan
+    include footer

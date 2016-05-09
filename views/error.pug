@@ -1,15 +1,12 @@
 doctype html
 html
-  head
-    link(rel='stylesheet', href='/index.css')
-    link(rel='shortcut icon', href='/favicon.png', type='image/x-icon') 
-    title= title
+  include head
   body
-    .header
-      h1.page-title= status
-    div.split
-    
-    .main-content= message
+    include navi
+    section#one.main.style1.special
+      .container
+        header.major
+          h2= 'Error '+status+ " - "+ message
+        p= "If you believe this to be an error, please contact me !"
 
-    .footer
-      p 2016 Aethra. By Soramdan
+    include footer

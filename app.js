@@ -31,14 +31,19 @@ app.set('views', './views');
 app.set('view engine', 'pug');
 
 app.get('/', function (req, res) {
-  res.render('homepage', { title: 'Aethra', message: 'Aethra'});
+  res.render('homepage', { title: '', message: 'Aethra'});
 });
 
-app.get('/test/:num', function(req, res) {
-  res.send("Num is set to " + req.params.num);
+app.get('/me', function (req, res) {
+  res.render('me', { title: 'Me'});
 });
-app.get('/test', function(req, res) {
-  res.send("Num is set to " + req.query.num);
+
+app.get('/api/:cmd', function(req, res) {
+  res.send("Api request : " + req.params.cmd +"(key: "+req.query.key+")");// ip/api/###?key=##
+  //res.json({key:req.query.key});
+});
+app.get('/api', function(req, res) {
+  res.send("WIP");
 });
 
 // catch 404 and forward to error handler
@@ -50,7 +55,7 @@ app.use(function(req, res, next) {
 app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   //res.send('Error: '+ err.message );
-  res.render('error.pug',{status:err.status,message:err.message})
+  res.render('error.pug',{title:err.status,status:err.status,message:err.message})
 });
 
 

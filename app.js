@@ -35,7 +35,7 @@ app.get('/', function (req, res) {
 });
 
 app.get('/me', function (req, res) {
-  res.render('me', { title: 'Me'});
+  res.render('meee', { title: 'Me'});
 });
 
 app.get('/article', function (req, res) {

@@ -42,6 +42,10 @@ app.get('/article', function (req, res) {
   res.render('article', { title: 'Article'});
 });
 
+app.get('/test', function (req, res) {
+  res.render('test', { title: 'Test'});
+});
+
 app.get('/api/:cmd', function(req, res) {
   //res.send("Api request : " + req.params.cmd +"(key: "+req.query.key+")");// ip/api/###?key=##
   res.json({cmd:req.params.cmd,key:req.query.key});

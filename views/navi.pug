@@ -1,16 +1,26 @@
 #header
-  nav#nav
+  nav.nav
+    a.nav-trigger(href="#0")
+      span(aria-hidden="true")
     ul
-      li.current
-        a(href='/') Home
       li
-        a(href='#') 2nd
+        a(href='/') 
+          span.icon.fa-code Home      
       li
-        a(href='left-sidebar.html') 3rd
+        a(href='/test')
+          span.icon.fa-code Test      
       li
-        a(href='right-sidebar.html') 4th
+        a(href='/article')
+          span.icon.fa-code Article      
       li
-        a(href='two-sidebar.html') 5th
+        a(href='/me')
+          span.icon.fa-code Me     
       li
-        a(href='no-sidebar.html') 7th
+        a(href='/404')
+          span.icon.fa-code 404     
+      li
+        a(href='#')
+          span.icon.fa-code ?       
+    span.nav-bg(aria-hidden="true")
+  
 

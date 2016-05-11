@@ -2914,7 +2914,7 @@
 		}
 
 		#header .icon.major {
-			margin:50px 0 15px 0;
+			margin:5em 0 15px 0;
 			color: #ffffff;
 		}
 		#header .icon.major:hover{
@@ -3015,41 +3015,47 @@
 
 /* Nav */
 .nav{
-  position:relative;
-  float:left;
   z-index: 5;
   top: 0;
-  left: 0;
+  margin-top:-8em;
+  left:0;
+  background-color:transparent;
 }
 
-.nav-trigger {
+#nav-trigger {
+  position:fixed;
   display:block;
-  position: inherit;
+  top:0.5em;
+  left:0.5em;
   text-align: center;
-  height: 3.5em;
+  border-radius:50%;
+  background-color:#1473a6;
+  height: 2.5em;
+  width:2.5em;
+  z-index:5;
   overflow: hidden;
   white-space: nowrap;
 }
-.nav-trigger::before {
+#nav-trigger::before {
   /* middle line of the hamburger icon */
   display: inline-block;
   color:#fff;
   font-size:2em;
-  vertical-align: -60%;
+  vertical-align: -50%;
 
 }
-.nav-trigger a {
-  /* middle line of the hamburger icon */
-  left: 50%;
-  top: 50%;
-  bottom: auto;
-  right: auto;
 
+.nav.nav-is-visible {
+  margin-top:0px;
+  background-color:#1473a6;
+  transition: all 0.3s ease-in-out;
 }
-.nav-is-visible .nav-trigger {
-  background-color: transparent;
+.nav-is-visible #nav-trigger {
+  margin-top:0;
+  float:left;
+  transition: all 0.1s ease-in-out;
 }
-.nav-is-visible .nav-trigger::before {
+.nav.nav-is-visible #nav-trigger::before {
   -webkit-transform: rotate(0deg);
   -moz-transform: rotate(0deg);
   -ms-transform: rotate(0deg);
@@ -3057,7 +3063,7 @@
   transform: rotate(0deg);
   transition: all 0.1s ease-in-out;
 }
-.nav-trigger::before{
+.nav #nav-trigger::before{
   -webkit-transform: rotate(-45deg);
   -moz-transform: rotate(-45deg);
   -ms-transform: rotate(-45deg);
@@ -3072,7 +3078,6 @@
 
 .nav ul {
   visibility: hidden;
-  position: relative;
   height: 100%;
   list-style-type: none;
   margin: 0;
@@ -3081,6 +3086,7 @@
 }
 .nav ul li{
   padding:0;
+  display: inline-block;
 }
 .nav ul li a{
     display:block;
@@ -3092,7 +3098,7 @@
     background: #eceef2;
     position: relative;
     border-bottom: 1px solid #deeef2;
-    transition: background 0.3s ease-in-out;
+    transition: background 0.2s ease-in-out;
 }
 .nav ul li a:before {
   font-family: FontAwesome;
@@ -3119,12 +3125,13 @@
 }
 .nav ul li a.current:after{
     position:absolute;
-    left:5em;
-    top:0;
+    left:0;
+    top:5em;
     content:"";
     border:2.5em solid transparent;
-    border-left-color:#59bae4;
-    border-width: 2.5em 1em
+    border-top-color:#59bae4;
+    border-width: 1em 2.5em;
+    z-index: 5;
 }
 .nav ul li{
     position:relative;

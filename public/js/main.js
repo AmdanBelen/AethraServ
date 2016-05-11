@@ -50,7 +50,7 @@
 			stretchyNavs.each(function(){
 				var stretchyNav = $(this), stretchyNavTrigger = stretchyNav.find('.nav-trigger');
 				stretchyNavTrigger.on('click', function(event){
-					event.preventDefault();
+					//event.preventDefault();
 					stretchyNav.toggleClass('nav-is-visible');
 				});
 			});

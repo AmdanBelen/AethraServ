@@ -1,7 +1,9 @@
-nav.nav
-  a.icon.fa-times.nav-trigger(href="#")
-    span(aria-hidden="true")
+nav.nav#nav
+  a.icon.fa-times.nav-trigger#nav-trigger(href="#nav")
   ul
+    li
+      a.icon.fa-times.nav-trigger(href="#nav")
+        span Close   
     li
       a.icon.fa-home(href='/') 
         span Home      
@@ -20,6 +22,5 @@ nav.nav
     li
       a.icon.fa-question(href='#')
         span #       
-  span.nav-bg(aria-hidden="true")
 
 

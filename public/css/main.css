@@ -3072,23 +3072,23 @@
   transition: all 0.1s ease-in-out;
 }
 
-.nav.nav-is-visible ul {
+.nav.nav-is-visible > ul {
   visibility: visible;
 }
 
-.nav ul {
+.nav > ul {
   visibility: hidden;
   height: 100%;
   list-style-type: none;
-  margin: 0;
-  padding: 0;
+  margin: 0 ;
+  padding: 0 5em 0 0;
   background: #eceef2;
 }
-.nav ul li{
+.nav > ul li{
   padding:0;
   display: inline-block;
 }
-.nav ul li a{
+.nav > ul > li a , .nav .login{
     display:block;
     height:5em;
     width:5em;
@@ -3100,7 +3100,7 @@
     border-bottom: 1px solid #deeef2;
     transition: background 0.2s ease-in-out;
 }
-.nav ul li a:before {
+.nav > ul li a:before, .nav .login:before {
   font-family: FontAwesome;
   speak: none;
   text-indent: 0em;
@@ -3111,19 +3111,19 @@
   height: 100%;
   font-size: 1.4em;
 }
-.nav ul li a:hover{
+.nav > ul li a:hover, .nav .login:hover{
   background: #59bae4;
   color: #fff;
 }
-.nav ul li.current a {
+.nav > ul li.current a {
   background: #59bae4;
   color: #fff;
 }
-.nav ul li a.current {
+.nav > ul li a.current {
   background: #59bae4;
   color: #fff;
 }
-.nav ul li a.current:after{
+.nav > ul li a.current:after{
     position:absolute;
     left:0;
     top:5em;
@@ -3133,10 +3133,10 @@
     border-width: 1em 2.5em;
     z-index: 5;
 }
-.nav ul li{
+.nav > ul li{
     position:relative;
 }
-.nav ul li a span{
+.nav > ul li a span, .nav .login span{
     position:relative;
     font-weight: 600;
     left:0;
@@ -3151,10 +3151,44 @@
     visibility:hidden;
     opacity:0;
 }
-.nav ul li:hover a span{
+.nav > ul li:hover a span, .nav .login:hover span{
     visibility:visible;
     opacity:1;
 }
+
+.nav a.login{
+	display: block;
+	position:absolute;
+	top:0;
+	right:0;
+	height: 5em;
+	width:5em;
+}
+.nav a.login .login-window{
+	display:block;
+	visibility: hidden;
+	position:absolute;
+	padding:1em;
+	right:0;
+	top:5em;
+	background-color: #eceef2;
+	line-height:1.65em;
+	z-index:5;
+}
+.nav a.login:hover .login-window{
+	visibility: visible;
+}
+.nav a.login .login-window form{
+	margin:0;
+}
+.nav a.login .login-window form .actions li{
+	padding-bottom:1em;
+}
+.nav a.login .login-window form input[type="checkbox"] + label{
+	line-height: 1.5em;
+	font-size: 0.7em;
+}
+
 @media screen and (max-height: 34em){
   .nav ul li{
     font-size:70%;

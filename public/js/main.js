@@ -1,8 +1,4 @@
-/*
-	Photon by HTML5 UP
-	html5up.net | @n33co
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
-*/
+
 
 (function($) {
 
@@ -44,8 +40,27 @@
 			$('.scrolly').scrolly();
 
 	});
+
+	$.fn.is_on_screen = function() {
+   		var win = $(window);
+
+    	var viewport = {
+        	top : win.scrollTop(),
+        	left : win.scrollLeft()
+   		};
+    	viewport.right = viewport.left + win.width();
+    	viewport.bottom = viewport.top + win.height();
+
+    	var bounds = this.offset();
+    	bounds.right = bounds.left + this.outerWidth();
+    	bounds.bottom = bounds.top + this.outerHeight();
+
+    	return (!(viewport.right < bounds.left || viewport.left > bounds.right || viewport.bottom < bounds.top || viewport.top > bounds.bottom));
+
+	};
+
 	$(document).ready(function(){
-		if( $('nav').length > 0 ) { 
+		if( $('.nav').length > 0 ) { 
 			var stretchyNavs = $('.nav'); 
 			stretchyNavs.each(function(){
 				var stretchyNav = $(this), stretchyNavTrigger = stretchyNav.find('.nav-trigger');
@@ -54,14 +69,30 @@
 					stretchyNav.toggleClass('nav-is-visible');
 				});
 			});
-		$(document).on('click', function(event){( !$(event.target).is('.nav-trigger') && !$(event.target).is('.nav-trigger span') ) && stretchyNavs.removeClass('nav-is-visible')});}});
+			//$(document).on('click', function(event){console.log(event);( !$(event.target).parent('.nav').length) && stretchyNavs.removeClass('nav-is-visible')});
+		}
+	});
 		
 	$(function() {
-     var pgurl = window.location.href.substr(window.location.href.lastIndexOf("/"));
-     $("nav ul li a").each(function(){
-          if($(this).attr("href") == pgurl || $(this).attr("href") == '' )
-			$(this).addClass("current");
-     })
+     	var pgurl = window.location.href.substr(window.location.href.lastIndexOf("/"));
+        $("nav ul li a").each(function(){
+          	if($(this).attr("href") == pgurl || $(this).attr("href") == '' )
+				$(this).addClass("current");
+     	})
+     	
+	});
+    var CurrentScroll = 0;
+	$(window).scroll(function(){ 
+		var NextScroll = $(this).scrollTop();
+		if (NextScroll > CurrentScroll){
+			if( $('.nav.nav-is-visible').length > 0 ) {
+				if(! $('.nav.nav-is-visible').is_on_screen() )
+					$('.nav.nav-is-visible').toggleClass('nav-is-visible');
+			}
+		}
+     	CurrentScroll = NextScroll; 
 });
+	
+
 
 })(jQuery);

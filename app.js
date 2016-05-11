@@ -70,11 +70,11 @@ app.get('/mail', function (req, res) {
   smtpTrans.sendMail(mailOpts, function (error, response) {
       //Email not sent
       if (error) {
-          res.render('contact', { title: 'Raging Flame Laboratory - Contact', msg: 'Error occured, message not sent.', err: true, page: 'contact' })
+          res.render('error', { title: 'Error', status:"Mail not sent", message: 'Error occured, message not sent.' })
       }
       //Yay!! Email sent
       else {
-          res.render('contact', { title: 'Raging Flame Laboratory - Contact', msg: 'Message sent! Thank you.', err: false, page: 'contact' })
+          res.render('error', { title: 'Mail Sent', status:"Mail sent", message: 'Message sent! Thank you.' })
       }
   });
 });

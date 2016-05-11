@@ -70,7 +70,7 @@ app.get('/mail', function (req, res) {
   smtpTrans.sendMail(mailOpts, function (error, response) {
       //Email not sent
       if (error) {
-          res.render('error', { title: 'Error', status:"Mail not sent", message: 'Error occured, message not sent.' })
+          res.render('error', { title: 'Error', status:"mail not sent", message: error })
       }
       //Yay!! Email sent
       else {

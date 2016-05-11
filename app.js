@@ -21,7 +21,7 @@ var smtpTrans = nodemailer.createTransport('SMTP', {
         user: process.env.OPENSHIFT_NODEJS_EMAIL_ADDR,
         pass: process.env.OPENSHIFT_NODEJS_EMAIL_PSWD
     }
-  });
+});
 
 function compile(str, path) {
   return stylus(str)
@@ -62,7 +62,7 @@ app.get('/mail', function (req, res) {
 
   //Mail options
   mailOpts = {
-      from: 'admin@aethra.io'//req.body.name + ' &lt;' + req.body.email + '&gt;', //grab form data from the request body object
+      from: 'admin@aethra.io',//req.body.name + ' &lt;' + req.body.email + '&gt;', //grab form data from the request body object
       to: 'admin@aethra.io',
       subject: 'Website contact form',
       text: 'Test'//req.body.message

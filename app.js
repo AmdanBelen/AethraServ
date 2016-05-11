@@ -2,6 +2,7 @@
  * Created by atulr on 05/07/15.
  */
 var express = require('express');
+var nodemailer = require('nodemailer');
 var path = require('path');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
@@ -10,6 +11,17 @@ var stylus = require('stylus');
 var nib =  nib = require('nib');
 
 var app = express();
+
+var smtpTrans = nodemailer.createTransport('SMTP', {
+    host: 'mail.pawnmail.com',
+    port: 587,
+    secure: false,
+    requireTLS:true, 
+    auth: {
+        user: process.env.OPENSHIFT_NODEJS_EMAIL_ADDR,
+        pass: process.env.OPENSHIFT_NODEJS_EMAIL_PSWD
+    }
+  });
 
 function compile(str, path) {
   return stylus(str)
@@ -44,6 +56,27 @@ app.get('/article', function (req, res) {
 
 app.get('/test', function (req, res) {
   res.render('test', { title: 'Test'});
+});
+app.get('/mail', function (req, res) {
+  var mailOpts;
+
+  //Mail options
+  mailOpts = {
+      from: 'admin@aethra.io'//req.body.name + ' &lt;' + req.body.email + '&gt;', //grab form data from the request body object
+      to: 'admin@aethra.io',
+      subject: 'Website contact form',
+      text: 'Test'//req.body.message
+  };
+  smtpTrans.sendMail(mailOpts, function (error, response) {
+      //Email not sent
+      if (error) {
+          res.render('contact', { title: 'Raging Flame Laboratory - Contact', msg: 'Error occured, message not sent.', err: true, page: 'contact' })
+      }
+      //Yay!! Email sent
+      else {
+          res.render('contact', { title: 'Raging Flame Laboratory - Contact', msg: 'Message sent! Thank you.', err: false, page: 'contact' })
+      }
+  });
 });
 
 app.get('/api/:cmd', function(req, res) {

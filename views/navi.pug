@@ -21,23 +21,24 @@ nav.nav.nav-is-visible#nav
         span 404     
     li
       a.icon.fa-question(href='#')
-        span #       
-  a.login.icon.fa-user(href='#')
-    span Login
-    .login-window
-      form(method='post', action='#')
-        .row.uniform(class='50%')
-           div(class='12u 12u$(xsmall)')
-            input#login-email(type='email', name='login-email', value='', placeholder='Email')
-           div(class='12u$ 12u$(xsmall)')
-            input#login-pwd(type='password', name='login-pwd', value='', placeholder='Password')
-           div(class='12u 12u$(small)')
-            input#login-remember(type='checkbox', name='login-remember')
-            |  
-            label(for='login-remember') Remember me
+        span #  
+    li.login     
+      a.icon.fa-user(href='#')
+        span Login
+        .login-window
+          form(method='post', action='#')
+            .row.uniform(class='50%')
+               div(class='12u 12u$(xsmall)')
+                input#login-email(type='email', name='login-email', value='', placeholder='Email')
+               div(class='12u$ 12u$(xsmall)')
+                input#login-pwd(type='password', name='login-pwd', value='', placeholder='Password')
+               div(class='12u 12u$(small)')
+                input#login-remember(type='checkbox', name='login-remember')
+                |  
+                label(for='login-remember') Remember me
 
-           div(class='12u$')
-            ul.actions
-              li
-                input.special(type='submit', value='Login')
+               div(class='12u$')
+                ul.actions
+                  li
+                    input.special(type='submit', value='Login')
 

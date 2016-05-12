@@ -2,7 +2,7 @@
  * Created by atulr on 05/07/15.
  */
 var express = require('express');
-var nodemailer = require('nodemailer');
+var mailer = require('express-mailer');
 var path = require('path');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
@@ -12,7 +12,9 @@ var nib =  nib = require('nib');
 
 var app = express();
 
-var smtpTrans = nodemailer.createTransport('SMTP', {
+
+mailer.extend(app, {
+    from: process.env.OPENSHIFT_NODEJS_EMAIL_ADDR,
     host: 'mail.pawnmail.com',
     port: 587,
     secure: false,
@@ -58,24 +60,18 @@ app.get('/test', function (req, res) {
   res.render('test', { title: 'Test'});
 });
 app.get('/mail', function (req, res) {
-  var mailOpts;
-
-  //Mail options
-  mailOpts = {
-      from: 'admin@aethra.io',//req.body.name + ' &lt;' + req.body.email + '&gt;', //grab form data from the request body object
-      to: 'admin@aethra.io',
-      subject: 'Website contact form',
-      text: 'Test'//req.body.message
-  };
-  smtpTrans.sendMail(mailOpts, function (error, response) {
-      //Email not sent
-      if (error) {
-          res.render('error', { title: 'Error', status:"mail not sent", message: error })
-      }
-      //Yay!! Email sent
-      else {
-          res.render('error', { title: 'Mail Sent', status:"Mail sent", message: 'Message sent! Thank you.' })
-      }
+  app.mailer.send('test',{
+    from: process.env.OPENSHIFT_NODEJS_EMAIL_ADDR,
+    to: 'admin@aethra.io',
+    subject: 'Test Email',
+    otherProperty: 'Other Property'
+  }, function (err) {
+    if (err) {
+      console.log(err);
+      res.send('There was an error sending the email');
+      return;
+    }
+    res.send('Email Sent');
   });
 });
 

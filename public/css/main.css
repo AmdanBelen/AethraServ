@@ -2822,10 +2822,10 @@
 /* Header */
 
 	#header {
-		padding:0;
+		padding: 150px 0 0 0;
 		background-color: #4686a0;
 		color: rgba(255, 255, 255, 0.75);
-		min-height:300px;
+		min-height:400px;
 		background-attachment: fixed,							fixed,							fixed;
 		background-image: url("images/overlay2.png"), url("images/overlay3.svg"), linear-gradient(45deg, #59bae4 5%, #1473a6 30%, #0c4462);
 		background-position: top left,						center center,					center center;
@@ -2915,7 +2915,7 @@
 		}
 
 		#header .icon.major {
-			margin:5em 0 15px 0;
+			margin:15px 0;
 			color: #ffffff;
 		}
 		#header .icon.major:hover{
@@ -3155,6 +3155,7 @@
 
 .nav > ul li.login{
 	float:right;
+	height:100%;
 }
 .nav > ul li.login a .login-window{
 	display:block;
@@ -3363,7 +3364,7 @@
 		/* Header */
 
 			#header {
-				padding: 0 ;
+				padding: 150px 0 0 0 ;
 			}
 
 	}
@@ -3407,7 +3408,7 @@
 		/* Header */
 
 			#header {
-				padding: 0 ;
+				padding: 150px 0 0 0 ;
 				background-attachment: scroll;
 			}
 
@@ -3454,7 +3455,7 @@
 		/* Header */
 
 			#header {
-				padding: 0 ;
+				padding: 150px 0 0 0 ;
 			}
 
 		/* Footer */
@@ -3545,7 +3546,7 @@
 		/* Header */
 
 			#header {
-				padding: 0 0 0 0 ;
+				padding: 150px 0 0 0 ;
 			}
 
 				#header .actions {
@@ -3621,7 +3622,7 @@
 		/* Header */
 
 			#header {
-				padding: 4em 0 2em 0 ;
+				padding: 100px 0 2em 0 ;
 			}
 
 				#header br {

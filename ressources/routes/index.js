@@ -13,8 +13,8 @@ var isAuthenticated = function (req, res, next) {
 
 
 module.exports = function(passport){
- 
-  
+
+
   router.get('/', function (req, res) {
     res.render('home', { title: '', message: 'Aethra'});
   });
@@ -66,21 +66,21 @@ module.exports = function(passport){
   });
 
   router.get('/admin',isAuthenticated,function(req,res){
-    res.send("Admin"+req.user);
+    res.send("Admin: "+req.user);
   });
 
-  
+
   /* GET Registration Page */
   router.get('/signup', function(req, res){
     res.render('register',{message: req.flash('message')});
   });
-  
+
   /* Handle Registration POST */
   router.post('/signup', passport.authenticate('signup', {
     successRedirect: '/home',
     failureRedirect: '/signup',
     failureFlash : true 
   }));
-  
+
   return router;
 }

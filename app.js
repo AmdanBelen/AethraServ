@@ -60,19 +60,9 @@ app.use(flash());
 var initPassport = require('./ressources/passport/init');
 initPassport(passport);
 
+
 var routes = require('./ressources/routes/index')(passport);
 app.use('/', routes);
-
-var Account = require('./ressources/models/account');
-passport.serializeUser(function(user, done) {
-  done(null, user._id);
-});
- 
-passport.deserializeUser(function(id, done) {
-  User.findById(id, function(err, user) {
-    done(err, user);
-  });
-});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

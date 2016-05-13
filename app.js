@@ -11,7 +11,9 @@ var bodyParser = require('body-parser');
 var stylus = require('stylus');
 var nib =  nib = require('nib');
 var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
 var session = require('express-session');
+var flash    = require('connect-flash');
 
 
 var app = express();
@@ -50,25 +52,18 @@ app.set('view engine', 'pug');
 app.use(require('express-session')({ secret: 'CHANGE ME TO PROCESS ENV VAR', resave: true, saveUninitialized: true }));
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(flash());
 
-passport.serializeUser(function(user, done) {
-  done(null, user.id);
-});
 
-passport.deserializeUser(function(id, done) {
-  User.findById(id, function (err, user) {
-    done(err, user);
-  });
-});
+var Account = require('./ressources/models/account');
+passport.use(new LocalStrategy(Account.authenticate()));
+passport.serializeUser(Account.serializeUser());
+passport.deserializeUser(Account.deserializeUser());
+
 
 var connection_string = '127.0.0.1:27017/YOUR_APP_NAME';
-// if OPENSHIFT env variables are present, use the available connection info:
-if(process.env.OPENSHIFT_MONGODB_DB_PASSWORD){
-  connection_string = process.env.OPENSHIFT_MONGODB_DB_USERNAME+":"+process.env.OPENSHIFT_MONGODB_DB_PASSWORD+"@"+process.env.OPENSHIFT_MONGODB_DB_HOST+':'+process.env.OPENSHIFT_MONGODB_DB_PORT+'/'+process.env.OPENSHIFT_APP_NAME;
-}
-mongoose.connect(connection_string, function(err, db) {
-  if(err) throw err;
-});
+if(process.env.OPENSHIFT_MONGODB_DB_PASSWORD){ connection_string = process.env.OPENSHIFT_MONGODB_DB_USERNAME+":"+process.env.OPENSHIFT_MONGODB_DB_PASSWORD+"@"+process.env.OPENSHIFT_MONGODB_DB_HOST+':'+process.env.OPENSHIFT_MONGODB_DB_PORT+'/'+process.env.OPENSHIFT_APP_NAME;}
+mongoose.connect(connection_string, function(err, db) { if(err) throw err;});
 
 
 
@@ -111,16 +106,17 @@ app.get('/api', function(req, res) {
   res.json({Error:"Not available"});
 });
 
-app.post('/login', 
-  passport.authenticate('local', { failureRedirect: '/' }),
-  function(req, res) {
+app.post('/login', passport.authenticate('local'), function(req, res) {
     res.redirect('/');
-  });
+});
 
 app.get('/logout', function(req, res){
-  console.log('logging out');
   req.logout();
   res.redirect('/');
+});
+
+app.get('/admin',isLoggedIn,function(req,res){
+  res.send("Admin"+req.user);
 });
 
 
@@ -136,6 +132,12 @@ app.use(function(err, req, res, next) {
   //res.send('Error: '+ err.message );
   res.render('error.pug',{title:error_code,status:error_code,message:err.message})
 });
+
+function isLoggedIn(req, res, next) {
+    if (req.isAuthenticated())
+        return next();
+    res.redirect('/');
+}
 
 
 module.exports = app;

@@ -10,6 +10,8 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var stylus = require('stylus');
 var nib =  nib = require('nib');
+var passport = require('passport');
+var session = require('express-session');
 
 
 var app = express();
@@ -45,7 +47,19 @@ app.use(stylus.middleware({
 }));
 app.set('views', './views');
 app.set('view engine', 'pug');
+app.use(require('express-session')({ secret: 'CHANGE ME TO PROCESS ENV VAR', resave: true, saveUninitialized: true }));
+app.use(passport.initialize());
+app.use(passport.session());
 
+passport.serializeUser(function(user, done) {
+  done(null, user.id);
+});
+
+passport.deserializeUser(function(id, done) {
+  User.findById(id, function (err, user) {
+    done(err, user);
+  });
+});
 
 var connection_string = '127.0.0.1:27017/YOUR_APP_NAME';
 // if OPENSHIFT env variables are present, use the available connection info:
@@ -96,6 +110,19 @@ app.get('/api/:cmd', function(req, res) {
 app.get('/api', function(req, res) {
   res.json({Error:"Not available"});
 });
+
+app.post('/login', 
+  passport.authenticate('local', { failureRedirect: '/' }),
+  function(req, res) {
+    res.redirect('/');
+  });
+
+app.get('/logout', function(req, res){
+  console.log('logging out');
+  req.logout();
+  res.redirect('/');
+});
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

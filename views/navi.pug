@@ -26,7 +26,7 @@ nav.nav.nav-is-visible#nav
       a.icon.fa-user(href='#')
         span Login
         .login-window
-          form(method='post', action='#')
+          form(method='post', action='/login')
             .row.uniform(class='50%')
                div(class='12u 12u$(xsmall)')
                 input#login-email(type='email', name='login-email', value='', placeholder='Email')
@@ -40,5 +40,5 @@ nav.nav.nav-is-visible#nav
                div(class='12u$')
                 ul.actions
                   li
-                    input.special(type='submit', disabled, value='Login')
+                    input.special(type='submit', value='Login')
 

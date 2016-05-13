@@ -55,7 +55,7 @@ module.exports = function(passport){
   });
 
   router.post('/login', passport.authenticate('login', {
-    successRedirect: '/home',
+    successRedirect: '/admin',
     failureRedirect: '/',
     failureFlash : true  
   }));
@@ -66,18 +66,18 @@ module.exports = function(passport){
   });
 
   router.get('/admin',isAuthenticated,function(req,res){
-    res.send("Admin: "+req.user);
+    res.send("admin: "+req.user);
   });
 
 
   /* GET Registration Page */
-  router.get('/signup', function(req, res){
+  router.get('/signup',isAuthenticated, function(req, res){
     res.render('register',{message: req.flash('message')});
   });
 
   /* Handle Registration POST */
-  router.post('/signup', passport.authenticate('signup', {
-    successRedirect: '/home',
+  router.post('/signup',isAuthenticated , passport.authenticate('signup', {
+    successRedirect: '/signup',
     failureRedirect: '/signup',
     failureFlash : true 
   }));

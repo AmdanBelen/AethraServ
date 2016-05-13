@@ -3149,8 +3149,11 @@
     text-align: center;
     padding:0;
     transition: all 0.3s ease-in-out;
-    visibility:hidden;
     opacity:0;
+}
+.nav > ul li:hover a span{
+    transition: all 0.3s ease-in-out;
+    opacity:1;
 }
 
 .nav > ul li.login{

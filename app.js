@@ -91,8 +91,9 @@ app.use(function(req, res, next) {
 });
 app.use(function(err, req, res, next) {
   res.status(err.status || 500);
+  var error_code = (err.status||500);
   //res.send('Error: '+ err.message );
-  res.render('error.pug',{title:err.status,status:err.status,message:err.message})
+  res.render('error.pug',{title:error_code,status:error_code,message:err.message})
 });
 
 

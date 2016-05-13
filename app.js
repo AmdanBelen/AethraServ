@@ -3,12 +3,14 @@
  */
 var express = require('express');
 var mailer = require('express-mailer');
+var mongoose = require('mongoose');
 var path = require('path');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var stylus = require('stylus');
 var nib =  nib = require('nib');
+
 
 var app = express();
 
@@ -43,6 +45,18 @@ app.use(stylus.middleware({
 }));
 app.set('views', './views');
 app.set('view engine', 'pug');
+
+
+var connection_string = '127.0.0.1:27017/YOUR_APP_NAME';
+// if OPENSHIFT env variables are present, use the available connection info:
+if(process.env.OPENSHIFT_MONGODB_DB_PASSWORD){
+  connection_string = process.env.OPENSHIFT_MONGODB_DB_USERNAME+":"+process.env.OPENSHIFT_MONGODB_DB_PASSWORD+"@"+process.env.OPENSHIFT_MONGODB_DB_HOST+':'+process.env.OPENSHIFT_MONGODB_DB_PORT+'/'+process.env.OPENSHIFT_APP_NAME;
+}
+mongoose.connect(connection_string, function(err, db) {
+  if(err) throw err;
+});
+
+
 
 app.get('/', function (req, res) {
   res.render('home', { title: '', message: 'Aethra'});

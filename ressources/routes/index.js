@@ -13,12 +13,6 @@ var isAuthenticated = function (req, res, next) {
 
 module.exports = function(passport){
 
-  router.use(function (req, res, next) {
-    res.locals.isAuthenticated = req.isAuthenticated();
-    res.locals.user = req.user;
-    next();
-  });
-
   router.get('/', function (req, res) {
     res.render('home', { title: '', message: 'Aethra'});
   });

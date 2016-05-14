@@ -57,6 +57,13 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
 
+app.use(function (req, res, next) {
+  res.locals.isAuthenticated = req.isAuthenticated();
+  res.locals.user = req.user;
+  next();
+});
+
+
 var initPassport = require('./ressources/passport/init');
 initPassport(passport);
 

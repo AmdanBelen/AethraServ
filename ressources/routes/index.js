@@ -63,22 +63,5 @@ module.exports = function(passport){
     res.redirect('/');
   });
 
-  router.get('/admin',isAuthenticated,function(req,res){
-    res.send("admin: "+req.user);
-  });
-
-
-  /* GET Registration Page */
-  router.get('/signup',isAuthenticated, function(req, res){
-    res.render('register',{message: req.flash('message')});
-  });
-
-  /* Handle Registration POST */
-  router.post('/signup',isAuthenticated , passport.authenticate('signup', {
-    successRedirect: '/signup',
-    failureRedirect: '/signup',
-    failureFlash : true 
-  }));
-
   return router;
 }

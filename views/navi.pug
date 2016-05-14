@@ -25,6 +25,11 @@ nav.nav.nav-is-visible#nav
     li.login     
       a.icon.fa-user(href='#')
         if isAuthenticated
+          span Me
+            .login-window
+              form( action='/')
+                input.special(type='submit', value='Logout')
+        else
           span Login
             .login-window
               form(method='post', action='/login')
@@ -37,8 +42,5 @@ nav.nav.nav-is-visible#nav
                     ul.actions
                       li
                         input.special(type='submit', value='Login')
-        else
-          span Me
-            .login-window
-              a(href='/logout') Logout
+
 

@@ -27,7 +27,7 @@ nav.nav.nav-is-visible#nav
         if isAuthenticated
           span Me
           .login-window
-            form( action='/')
+            form(method='get' action='/logout')
               .row.uniform(class='50%')
                 div(class='12u$')
                     ul.actions

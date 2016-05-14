@@ -13,7 +13,7 @@ var isAuthenticated = function (req, res, next) {
 
 
 module.exports = function(passport){
-  app.use( function (req, res, next) {
+  router.use( function (req, res, next) {
     res.locals({ 
       isAuthenticated: req.isAuthenticated(),
       user: req.user

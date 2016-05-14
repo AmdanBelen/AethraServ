@@ -28,7 +28,11 @@ nav.nav.nav-is-visible#nav
           span Me
             .login-window
               form( action='/')
-                input.special(type='submit', value='Logout')
+                .row.uniform(class='50%')
+                  div(class='12u$')
+                      ul.actions
+                        li
+                          input.special(type='submit', value='Logout')
         else
           span Login
             .login-window

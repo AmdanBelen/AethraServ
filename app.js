@@ -69,8 +69,9 @@ initPassport(passport);
 
 
 var routes = require('./ressources/routes/index')(passport);
-app.use('/', routes);
 var admin = require('./ressources/routes/admin')((passport));
+app.use('/', routes);
+
 app.use('/admin', admin);
 
 // catch 404 and forward to error handler

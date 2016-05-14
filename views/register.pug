@@ -3,27 +3,29 @@ html
   include head
 body
     include simple_header
-    section
-      h4 Form
-      form(method='post', action='/signup')
-        .row.uniform(class='50%')
-          div(class='6u 12u$(xsmall)')
-            input(type='text', name='username', placeholder='Username',required, autofocus)
-          div(class='6u 12u$(xsmall)')
-            input(type='password', name='password', class='form-control nomargin', placeholder='Password', required)
-          div(class='6u 12u$(xsmall)')
-            input(type='password', name='password', class='form-control nomargin', placeholder='Password', required)
-          div(class='6u 12u$(xsmall)')
-            input(type='email', name='email', class='form-control', placeholder='Email',required)
-          div(class='6u 12u$(xsmall)')
-            input(type='text', name='firstName', class='form-control', placeholder='First Name',required)
-          div(class='6u 12u$(xsmall)')
-            input(type='text', name='lastName', class='form-control', placeholder='Last Name',required)
-          div(class='12u$')
-            ul.actions
-              li
-                input.special(type='submit', value='Add User')
-              li
-                input(type='reset', value='Reset')
-          if message
-            h1.text-center.error-message #{message}
+    section#one.main.style1.special
+      .container
+        h4 Form
+        form(method='post', action='/signup')
+          .row.uniform(class='50%')
+            div(class='6u 12u$(xsmall)')
+              input(type='text', name='username', placeholder='Username',required, autofocus)
+            div(class='6u 12u$(xsmall)')
+              input(type='password', name='password', class='form-control nomargin', placeholder='Password', required)
+            div(class='6u 12u$(xsmall)')
+              input(type='password', name='password', class='form-control nomargin', placeholder='Password', required)
+            div(class='6u 12u$(xsmall)')
+              input(type='email', name='email', class='form-control', placeholder='Email',required)
+            div(class='6u 12u$(xsmall)')
+              input(type='text', name='firstName', class='form-control', placeholder='First Name',required)
+            div(class='6u 12u$(xsmall)')
+              input(type='text', name='lastName', class='form-control', placeholder='Last Name',required)
+            div(class='12u$')
+              ul.actions
+                li
+                  input.special(type='submit', value='Add User')
+                li
+                  input(type='reset', value='Reset')
+            if message
+              h1.text-center.error-message #{message}
+    include footer

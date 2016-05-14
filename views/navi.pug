@@ -36,13 +36,13 @@ nav.nav.nav-is-visible#nav
         else
           span Login
           .login-window
-             form(method='post', action='/login')
-               .row.uniform(class='50%')
-                  div(class='12u 12u$(xsmall)')
-                   input#login-email(type='text', name='username', value='', placeholder='Email')
-                  div(class='12u$ 12u$(xsmall)')
+            form(method='post', action='/login')
+              .row.uniform(class='50%')
+                div(class='12u 12u$(xsmall)')
+                  input#login-email(type='text', name='username', value='', placeholder='Email')
+                div(class='12u$ 12u$(xsmall)')
                   input#login-pwd(type='password', name='password', value='', placeholder='Password')
-                 div(class='12u$')
+                div(class='12u$')
                   ul.actions
                     li
                       input.special(type='submit', value='Login')

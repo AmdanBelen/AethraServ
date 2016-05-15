@@ -54,7 +54,7 @@ module.exports = function(passport){
   });
 
   router.get('/manage_users', function(req, res){
-    res.render('manage_users',{message: req.flash('message'),users:getUsers()});
+    res.render('manage_users',{message: req.flash('message'),users:getUsers});
   });
 
   router.post('/manage_users',function(req, res, next) {

@@ -27,15 +27,16 @@ body
             if message
               .error-message #{message}
       script.
-        $( ".container form" ).submit(function( event ) {
-          event.preventDefault();
-          var $form = $( this ),
-          term = $form.find( "input[name='s']" ).val(),
-          url = $form.attr( "action" );
-          var posting = $.post( url, $form.serialize() );
- 
-          posting.done(function( data ) {
-            console.log(data);
+        (function($) {
+          $( ".container form" ).submit(function( event ) {
+            event.preventDefault();
+            var $form = $( this ),
+            term = $form.find( "input[name='s']" ).val(),
+            url = $form.attr( "action" );
+            var posting = $.post( url, $form.serialize() );
+            posting.done(function( data ) {
+              console.log(data);
+            });
           });
-        });
+        })(jQuery);
     include footer

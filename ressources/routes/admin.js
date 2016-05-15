@@ -42,13 +42,14 @@ module.exports = function(passport){
     res.render('manage_users',{message: req.flash('message')});
   });
 
-  router.post('/manage_users', passport.authenticate('register', 
-    function (err, account) {
-      req.logIn(account, function() {
-        res.status(err ? 500 : 200).send(err ? err : account);
-      });
-    })(this.req, this.res, this.next);
-  }));
+  router.post('/manage_users', passport.authenticate('register'), 
+    function (req, res) {
+      if(req.user)
+        res.json({message:"Added User"});
+      else
+        res.json({message:"Failed Adding User"});
+    }
+  );
 
   return router;
 }

@@ -17,10 +17,10 @@ body
             tbody
               each user in users 
                 tr
-                  td #{email}
-                  td #{firstName}
-                  td #{lastName}
-                  td #{permission}
+                  td #{user.email}
+                  td #{user.firstName}
+                  td #{user.lastName}
+                  td #{user.permission}
             if users
               div(class='12u$')
         form.no-reload(method='post', action='/admin/manage_users')

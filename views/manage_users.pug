@@ -6,7 +6,7 @@ body
     section#one.main.style1.special
       .container
         h4 Form
-        form(method='post', action='/admin/manage_users')
+        form.no-reload(method='post', action='/admin/manage_users')
           .row.uniform(class='50%')
             div(class='4u 12u$(xsmall)')
               input(type='text', name='username', placeholder='Username',required, autofocus)
@@ -26,17 +26,4 @@ body
                   input(type='reset', value='Reset')
             if message
               .error-message #{message}
-      script.
-        (function($) {
-          $( ".container form" ).submit(function( event ) {
-            event.preventDefault();
-            var $form = $( this ),
-            term = $form.find( "input[name='s']" ).val(),
-            url = $form.attr( "action" );
-            var posting = $.post( url, $form.serialize() );
-            posting.done(function( data ) {
-              console.log(data);
-            });
-          });
-        })(jQuery);
     include footer

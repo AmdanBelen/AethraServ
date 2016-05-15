@@ -92,6 +92,16 @@
 		}
      	CurrentScroll = NextScroll; 
 });
+	$("form.no-reload").submit(function( event ) {
+        event.preventDefault();
+        var $form = $( this ),
+        //term = $form.find( "input[name='s']" ).val(),
+        url = $form.attr( "action" );
+        var posting = $.post( url, $form.serialize() );
+        posting.done(function( data ) {
+           console.log(data);
+        });
+    });
 	
 
 

@@ -15,6 +15,7 @@ module.exports = function(passport){
 
   router.use(function (req, res, next) {
       res.locals.LoginMessage = req.flash('message');
+      next();
   });
 
   router.get('/', function (req, res) {

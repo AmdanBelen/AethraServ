@@ -99,7 +99,11 @@
         url = $form.attr( "action" );
         var posting = $.post( url, $form.serialize() );
         posting.done(function( data ) {
-           console.log(data);
+    		if(data.message) 
+           		$form.child('.message').text(data.message);
+           	else if(data.redirect)
+           		window.location.href = data.redirect;
+
         });
     });
 	

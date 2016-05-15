@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var db_fnc = require('../passport/db_fnc');
 
 module.exports = function(passport){
 
@@ -42,11 +43,9 @@ module.exports = function(passport){
     res.render('manage_users',{message: req.flash('message')});
   });
 
-  router.post('/manage_users', passport.authenticate('signup', {
-    successRedirect: '/admin/manage_users',
-    failureRedirect: '/admin/manage_users',
-    failureFlash : true ,
-  }));
+  router.post('/manage_users', function(req,res){
+    res.send(db_fnc.add_user());
+  });
 
   return router;
 }

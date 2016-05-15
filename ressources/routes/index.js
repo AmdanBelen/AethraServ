@@ -13,6 +13,10 @@ var isAuthenticated = function (req, res, next) {
 
 module.exports = function(passport){
 
+  router.use(function (req, res, next) {
+      res.locals.LoginMessage = req.flash('message');
+  });
+
   router.get('/', function (req, res) {
     res.render('home', { title: '', message: 'Aethra'});
   });

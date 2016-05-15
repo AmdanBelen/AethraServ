@@ -46,5 +46,7 @@ nav.nav.nav-is-visible#nav
                   ul.actions
                     li
                       input.special(type='submit', value='Login')
+                if LoginMessage
+                  h1.text-center.error-message #{LoginMessage}
 
 

@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var User = require('../models/account');
 
-var getUsers = function () {
+var getUsers = function (req, res, next) {
   User.find({}, function(err, users) {
     var userMap = {};
 
@@ -10,7 +10,8 @@ var getUsers = function () {
       userMap[user._id] = user;
     });
 
-    return userMap;  
+    res.locals.users = userMap;
+    next();
   });
 }
 
@@ -53,8 +54,8 @@ module.exports = function(passport){
     });
   });
 
-  router.get('/manage_users', function(req, res){
-    res.render('manage_users',{message: req.flash('message'),users:getUsers});
+  router.get('/manage_users',getUsers, function(req, res){
+    res.render('manage_users',{message: req.flash('message')});
   });
 
   router.post('/manage_users',function(req, res, next) {

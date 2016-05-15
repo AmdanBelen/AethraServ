@@ -49,14 +49,6 @@ module.exports = function(passport){
     });
   });
 
-  router.get('/api/:cmd', function(req, res) {
-  //res.send("Api request : " + req.params.cmd +"(key: "+req.query.key+")");// ip/api/###?key=##
-  res.json({cmd:req.params.cmd,key:req.query.key});
-});
-  router.get('/api', function(req, res) {
-    res.json({Error:"Not available"});
-  });
-
   router.post('/login', passport.authenticate('login', {
     successRedirect: '/admin',
     failureRedirect: '/',

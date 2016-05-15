@@ -42,14 +42,16 @@ module.exports = function(passport){
     res.render('manage_users',{message: req.flash('message')});
   });
 
-  router.post('/manage_users', passport.authenticate('register'), 
-    function (req, res) {
-      if(req.user)
-        res.json({message:"Added User"});
-      else
-        res.json({message:"Failed Adding User"});
-    }
-  );
+  router.post('/manage_users',function(req, res, next) {
+    passport.authenticate('register', function(err, user, info) {
+      if (err) { return res.json({message:err}); }
+      if (!user) { return res.json({message:'User Exists'}); }
+      req.logIn(user, function(err) {
+        if (err) { res.json({message:err}); }
+        return res.json({message:'User Added'});
+      });
+    })(req, res, next);
+  });
 
   return router;
 }

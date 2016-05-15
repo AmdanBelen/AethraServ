@@ -4,13 +4,7 @@ var User = require('../models/account');
 
 var getUsers = function (req, res, next) {
   User.find({}, function(err, users) {
-    var userMap = {};
-
-    users.forEach(function(user) {
-      userMap[user._id] = user;
-    });
-
-    res.locals.users = userMap;
+    res.locals.users = users;
     next();
   });
 }

@@ -44,7 +44,7 @@ module.exports = function(passport){
   });
 
   router.post('/manage_users', function(req,res){
-    res.send(db_fnc.add_user());
+    res.send(db_fnc.add_user(req, ''));
   });
 
   return router;

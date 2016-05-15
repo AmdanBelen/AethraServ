@@ -16,7 +16,7 @@ module.exports = function(){
                         var newUser = new User();
                         newUser.email = req.param('email');
                         newUser.permission = 0;
-                        newUser.password = createHash(req.param('password');
+                        newUser.password = createHash(req.param('password'));
                         newUser.firstName = req.param('firstName');
                         newUser.lastName = req.param('lastName');
 

@@ -1,5 +1,20 @@
 var express = require('express');
 var router = express.Router();
+var User = require('../models/account');
+
+var getUsers = function () {
+  User.find({}, function(err, users) {
+    var userMap = {};
+
+    users.forEach(function(user) {
+      userMap[user._id] = user;
+    });
+
+    return userMap;  
+  });
+}
+
+
 
 module.exports = function(passport){
 
@@ -39,7 +54,7 @@ module.exports = function(passport){
   });
 
   router.get('/manage_users', function(req, res){
-    res.render('manage_users',{message: req.flash('message')});
+    res.render('manage_users',{message: req.flash('message'),users:getUsers()});
   });
 
   router.post('/manage_users',function(req, res, next) {

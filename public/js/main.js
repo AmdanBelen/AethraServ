@@ -99,7 +99,8 @@
         url = $form.attr( "action" );
         var posting = $.post( url, $form.serialize() );
         posting.done(function( data ) {
-        	console.log(data);
+        	if(data.error)
+        		$form.reset();
     		if(data.message) 
            		$('div > .error-message',$form).text(data.message);
            	else if(data.redirect)

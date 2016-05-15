@@ -5,7 +5,24 @@ body
     include simple_header
     section#one.main.style1.special
       .container
-        h4 Form
+        h4 User Management
+        .table-wrapper
+          table.alt
+            thead
+              tr
+                th Email
+                th First Name
+                th Last Name
+                th Perm Level
+            tbody
+              each user in users 
+                tr
+                  td #{email}
+                  td #{firstName}
+                  td #{lastName}
+                  td #{permission}
+            if users.length
+              div(class='12u$')
         form.no-reload(method='post', action='/admin/manage_users')
           .row.uniform(class='50%')
             div(class='3u 12u$(xsmall)')
@@ -19,7 +36,7 @@ body
             div(class='12u$')
               ul.actions
                 li
-                  input.special(type='submit', value='Add User')
+                  input.special(type='submit', value='Save')
                 li
                   input(type='reset', value='Reset')
             div(class='12u$')

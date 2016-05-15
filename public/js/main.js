@@ -100,7 +100,7 @@
         var posting = $.post( url, $form.serialize() );
         posting.done(function( data ) {
     		if(data.message) 
-           		$form.child('.message').text(data.message);
+           		$form.children('.error-message').text(data.message);
            	else if(data.redirect)
            		window.location.href = data.redirect;
 

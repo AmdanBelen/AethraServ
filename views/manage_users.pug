@@ -21,7 +21,7 @@ body
                   td #{firstName}
                   td #{lastName}
                   td #{permission}
-            if users.length
+            if users
               div(class='12u$')
         form.no-reload(method='post', action='/admin/manage_users')
           .row.uniform(class='50%')

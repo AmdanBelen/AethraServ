@@ -38,13 +38,13 @@ module.exports = function(passport){
     });
   });
 
-  router.get('/signup', function(req, res){
+  router.get('/manage_users', function(req, res){
     res.render('register',{message: req.flash('message')});
   });
 
-  router.post('/signup', passport.authenticate('signup', {
-    successRedirect: '/admin/signup',
-    failureRedirect: '/admin/signup',
+  router.post('/manage_users', passport.authenticate('signup', {
+    successRedirect: '/admin/manage_users',
+    failureRedirect: '/admin/manage_users',
     failureFlash : true ,
   }));
 

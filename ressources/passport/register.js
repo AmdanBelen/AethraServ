@@ -1,22 +1,26 @@
+var LocalStrategy   = require('passport-local').Strategy;
 var User = require('../models/account');
 var bCrypt = require('bcrypt-nodejs');
 
-module.exports = function(){
+module.exports = function(passport){
 
-        add_user = function(req, password, done) {
-            var email = req.param('email');
+	passport.use('register', new LocalStrategy({
+            passReqToCallback : true // allows us to pass back the entire request to the callback
+        },
+        function(req, email, password, done) {
+
             findOrCreateUser = function(){
                 User.findOne({ 'email' :  email }, function(err, user) {
                     if (err){
-                        return {message:err};
+                        return done(err);
                     }
                     if (user) {
-                        return {message:'User Already Exists'};
+                        return done(null, false, req.flash('message','User Already Exists'));
                     } else {
                         var newUser = new User();
-                        newUser.email = req.param('email');
+                        newUser.email = email;
                         newUser.permission = 0;
-                        newUser.password = createHash(req.param('password'));
+                        newUser.password = createHash(password);
                         newUser.firstName = req.param('firstName');
                         newUser.lastName = req.param('lastName');
 
@@ -24,14 +28,14 @@ module.exports = function(){
                             if (err){
                                 throw err;  
                             } 
-                            return {message:'User Added'};
+                            return done(null, newUser);
                         });
                     }
                 });
             };
             process.nextTick(findOrCreateUser);
-        }
-
+        })
+    );
 
     // Generates hash using bCrypt
     var createHash = function(password){

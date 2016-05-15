@@ -1,6 +1,5 @@
 var express = require('express');
 var router = express.Router();
-var db_fnc = require('../passport/db_fnc');
 
 module.exports = function(passport){
 
@@ -43,9 +42,13 @@ module.exports = function(passport){
     res.render('manage_users',{message: req.flash('message')});
   });
 
-  router.post('/manage_users', function(req,res){
-    res.send(db_fnc.add_user(req, ''));
-  });
+  router.post('/manage_users', passport.authenticate('register', 
+    function (err, account) {
+      req.logIn(account, function() {
+        res.status(err ? 500 : 200).send(err ? err : account);
+      });
+    })(this.req, this.res, this.next);
+  }));
 
   return router;
 }

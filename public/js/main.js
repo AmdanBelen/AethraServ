@@ -101,7 +101,7 @@
         posting.done(function( data ) {
         	console.log(data);
     		if(data.message) 
-           		$form.children('.error-message').text(data.message);
+           		$('div > .error-message',$form).text(data.message);
            	else if(data.redirect)
            		window.location.href = data.redirect;
 

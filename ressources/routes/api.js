@@ -17,5 +17,15 @@ module.exports = function(passport){
     res.json({message:'Welcome to the API'});
   });
 
+  router.get('/users',isAuthenticated, function (req, res) {
+  	User.find({}, function(err, users) {
+    	var userMap = {};
+    	users.forEach(function(user) {
+      		userMap[user._id] = user;
+    	});
+    	res.json(userMap);
+  	});
+  });
+
   return router;
 }

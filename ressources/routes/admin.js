@@ -39,7 +39,7 @@ module.exports = function(passport){
   });
 
   router.get('/manage_users', function(req, res){
-    res.render('register',{message: req.flash('message')});
+    res.render('manage_users',{message: req.flash('message')});
   });
 
   router.post('/manage_users', passport.authenticate('signup', {

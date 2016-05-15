@@ -43,8 +43,8 @@ module.exports = function(passport){
   });
 
   router.post('/signup', passport.authenticate('signup', {
-    successRedirect: '/signup',
-    failureRedirect: '/signup',
+    successRedirect: '/admin/signup',
+    failureRedirect: '/admin/signup',
     failureFlash : true 
   }));
 

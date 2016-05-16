@@ -17,6 +17,6 @@
 
         });
     };
-
+     $("form input#save").on("click", refresh_table());
 
 })(jQuery);

@@ -5,12 +5,10 @@ var bCrypt = require('bcrypt-nodejs');
 
 
 
-var IsAuthenticated = function () {
-  return function (req, res, next) {
-    if (req.isAuthenticated())
-      return next();
-    res.json({message:"Not Authenticated"});
-  };
+var IsAuthenticated = function (req, res, next) {
+  if (req.isAuthenticated())
+    return next();
+  res.json({message:"Not Authenticated"});
 };
 var HasPerm = function(level){
   return function(req,res,next){

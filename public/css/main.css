@@ -2053,10 +2053,10 @@
 			opacity: 0.25;
 		}
 
-		input[type="text"]:readonly,
-		input[type="password"]:readonly,
-		input[type="email"]:readonly,
-		input[type="number"]:readonly,
+		input[type="text"]:read-only,
+		input[type="password"]:read-only,
+		input[type="email"]:read-only,
+		input[type="number"]:read-only,
 		select:readonly,
 		textarea:readonly {
 			cursor: default;

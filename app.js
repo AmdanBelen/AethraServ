@@ -53,6 +53,7 @@ app.use(stylus.middleware({
 }));
 app.set('views', './views');
 app.set('view engine', 'pug');
+app.set('trust proxy', true);
 app.use(require('express-session')({ secret: 'CHANGE ME TO PROCESS ENV VAR', resave: true, saveUninitialized: true }));
 app.use(passport.initialize());
 app.use(passport.session());

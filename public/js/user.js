@@ -23,7 +23,7 @@
        $table.load( window.location.href +" table#DataTab" );
     };
 
-     $('#delete',$table).on("click", delete_user($(this).parents("tr").children().first().text()));
+     $("table#DataTab #delete").on("click", delete_user($(this).parents("tr").children().first().text()));
 
 	function delete_user(mail){
 		console.log(mail);

@@ -41,7 +41,7 @@ function compile(str, path) {
     .use(nib());
 }
 
-app.use(logger(':remote-addr :method :url :status :response-time'));
+app.use(logger('short'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());

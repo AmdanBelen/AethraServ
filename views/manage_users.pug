@@ -25,9 +25,9 @@ body
                   td
                     ul.actions
                       li
-                        button#delete(type='button' onclick='delete_user($this); return false;') Delete
+                        button#delete(type='button') Delete
                       li
-                        button#edit(type='button' onclick='') Edit
+                        button#edit(type='button') Edit
             if users
               div(class='12u$')
         form.no-reload(method='post', action='/admin/manage_users')

@@ -34,9 +34,9 @@
      	var $form = $('form.no-reload');
      	$("input[name='username']",$form).prop('disabled', true);
      	$("input[name='password']",$form).prop('disabled', true);
-     	$("input[name='firstName']",$form).val($($data+"nth-child(1)").text());
-     	$("input[name='lastName']",$form).val($($data+"nth-child(2)").text());
-     	$("input[name='permission']",$form).val($($data+"nth-child(3)").text());
+     	$("input[name='firstName']",$form).val($data.eq(1).text());
+     	$("input[name='lastName']",$form).val($data.eq(2).text());
+     	$("input[name='permission']",$form).val($data.eq(3).text());
  	});
 
 	function delete_user(mail){

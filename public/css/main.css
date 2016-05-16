@@ -2053,6 +2053,16 @@
 			opacity: 0.25;
 		}
 
+		input[type="text"]:readonly,
+		input[type="password"]:readonly,
+		input[type="email"]:readonly,
+		input[type="number"]:readonly,
+		select:readonly,
+		textarea:readonly {
+			cursor: default;
+			opacity: 0.5;
+		}
+
 
 		input[type="text"]:invalid,
 		input[type="password"]:invalid,

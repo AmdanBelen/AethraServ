@@ -41,7 +41,6 @@ module.exports = function(passport){
 
   router.post('/user/add',isAuthenticated, function(req, res) {
     var email = req.body.username;
-    res.send(req);
     var password = req.body.password;
     User.findOne({ 'email' :  email }, function(err, user) {
       if (err){

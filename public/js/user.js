@@ -20,8 +20,8 @@
 
     $("form.no-reload").on("reset",function( event ) {
         var $form = $(this);
-        $("input[name='username']",$form).prop('disabled', false);
-     	$("input[name='password']",$form).prop('disabled', false);
+        $("input[name='username']",$form).prop('readonly', false);
+     	$("input[name='password']",$form).prop('readonly', false);
      	$("input[name='password']",$form).prop('required', true)
     });
 
@@ -38,8 +38,8 @@
 	$( document ).on( "click", "table#DataTab #edit",  function(event){
      	var $data = $(this).parents("tr").children();
      	var $form = $('form.no-reload');
-     	$("input[name='username']",$form).prop('disabled', true);
-     	$("input[name='password']",$form).prop('disabled', true);
+     	$("input[name='username']",$form).prop('readonly', true);
+     	$("input[name='password']",$form).prop('readonly', true);
      	$("input[name='username']",$form).val($data.eq(0).text());
      	$("input[type='password']",$form).val('');
      	$("input[name='password']",$form).prop('required',false);

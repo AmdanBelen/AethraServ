@@ -15,7 +15,8 @@ module.exports = function(passport){
                         return done(err);
                     }
                     if (user) {
-                        if(req.body.edit){
+                        console.log(password);
+                        if(password==''){
                             User.permission = req.body.permission;
                             User.firstName = req.body.firstName;
                             User.lastName = req.body.lastName;

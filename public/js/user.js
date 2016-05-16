@@ -3,7 +3,7 @@
 	function refresh_table() {
 		var $table =  $( "table#DataTab" );
        $table.load( window.location.href +" table#DataTab" );
-       $('#delete',$table).on("click",delete_user($this));
+       $('#delete',$table).on("click",,function(event){delete_user($(this)});
     };
 
 

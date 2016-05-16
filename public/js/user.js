@@ -2,7 +2,7 @@
 
 	$("form.no-reload").submit(function( event ) {
         event.preventDefault();
-        var $form = $( this ),
+        var $form = $( this );
         //term = $form.find( "input[name='s']" ).val(),
         url = $form.attr( "action" );
         var posting = $.post( url, $form.serialize() );
@@ -18,6 +18,12 @@
         });
     });
 
+    $("form.no-reload").reset(function( event ) {
+        var $form = $(this);
+        $("input[name='username']",$form).prop('disabled', false);
+     	$("input[name='password']",$form).prop('disabled', false);
+    });
+
 	function refresh_table() {
 		var $table =  $( "table#DataTab" );
        $table.load( window.location.href +" table#DataTab" );
@@ -25,13 +31,11 @@
 
     $( document ).on( "click", "table#DataTab #delete",  function(event){
      	var mail = $(this).parents("tr").children().first().text();
-     	console.log(mail);
      	delete_user(mail);
  	});
 
 	$( document ).on( "click", "table#DataTab #edit",  function(event){
      	var $data = $(this).parents("tr").children();
-     	console.log($data);
      	var $form = $('form.no-reload');
      	$("input[name='username']",$form).prop('disabled', true);
      	$("input[name='password']",$form).prop('disabled', true);

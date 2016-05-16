@@ -44,14 +44,18 @@ module.exports = function(passport){
     var password = req.body.password;
     User.findOne({ 'email' :  email }, function(err, user) {
       if (err){
-          res.json({message:"Server Error"})
+          res.json({message:"Server Error"});
       }
       if (user) {
-          User.permission = req.body.permission;
-          User.firstName = req.body.firstName;
-          User.lastName = req.body.lastName;
-          User.save();
-          res.json({message:"User Modified"});
+          user.permission = req.body.permission;
+          user.firstName = req.body.firstName;
+          user.lastName = req.body.lastName;
+          user.save(function(err) {
+              if (err){
+                  throw err;  
+              } 
+              res.json({message:"User Modified"});
+          });
       } else {
           var newUser = new User();
           newUser.email = email;
@@ -63,7 +67,7 @@ module.exports = function(passport){
               if (err){
                   throw err;  
               } 
-              res.json({message:"User Created"})
+              res.json({message:"User Created"});
           });
       }
     });

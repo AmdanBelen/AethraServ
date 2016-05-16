@@ -15,13 +15,11 @@ module.exports = function(passport){
                         return done(err);
                     }
                     if (user) {
-                        console.log(password);
-                        if(!password){
-                            User.permission = req.body.permission;
-                            User.firstName = req.body.firstName;
-                            User.lastName = req.body.lastName;
-                            User.save();
-                        }else return done(null, false, req.flash('message', 'User exists, use edit'));  
+                        User.permission = req.body.permission;
+                        User.firstName = req.body.firstName;
+                        User.lastName = req.body.lastName;
+                        User.save();
+                        //}else return done(null, false, req.flash('message', 'User exists, use edit'));  
                     } else {
                         var newUser = new User();
                         newUser.email = email;

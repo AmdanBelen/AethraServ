@@ -53,4 +53,5 @@ body
         function RefreshTable() {
           $( "table#DataTab" ).load( window.location.href +" table#DataTab" );
         }
-        $("form input#save").on("click", RefreshTable());
+        $("form input#save").on("click", function(event){$( "table#DataTab" ).load( window.location.href +" table#DataTab" );});
+        $("table#DataTab button#delete").on("click",function(event){console.log($(this).parents("tr").children().first().text());});

@@ -8,6 +8,7 @@
 
 
 	function delete_user(mail){
+		console.log(mail);
 		var url ='/api/user/delete/' + mail;
 		var posting = $.post( url, '' );
         posting.done(function( data ) {

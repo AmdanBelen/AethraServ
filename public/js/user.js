@@ -23,10 +23,13 @@
        $table.load( window.location.href +" table#DataTab" );
     };
 
-     $("table#DataTab #delete").on("click", delete_user($(this).parents("tr").children().first().text()));
+     $("table#DataTab #delete").on("click", function(event){
+     	var mail = $(this).parents("tr").children().first().text();
+     	console.log(mail);
+     	delete_user(mail);
+ 	});
 
 	function delete_user(mail){
-		console.log(mail);
 		var url ='/api/user/delete/' + mail;
 		var posting = $.post( url, '' );
         posting.done(function( data ) {

@@ -19,10 +19,10 @@ module.exports = function(passport){
                     } else {
                         var newUser = new User();
                         newUser.email = email;
-                        newUser.permission = 0;
+                        newUser.permission = req.body.permission;
                         newUser.password = createHash(password);
-                        newUser.firstName = req.params.firstName;
-                        newUser.lastName = req.params.lastName;
+                        newUser.firstName = req.body.firstName;
+                        newUser.lastName = req.body.lastName;
 
                         newUser.save(function(err) {
                             if (err){

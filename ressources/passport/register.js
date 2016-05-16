@@ -16,12 +16,12 @@ module.exports = function(passport){
                     }
                     if (user) {
                         console.log(password);
-                        if(password==''){
+                        if(!password){
                             User.permission = req.body.permission;
                             User.firstName = req.body.firstName;
                             User.lastName = req.body.lastName;
                             User.save();
-                        }else return done(null, false, req.flash('message', 'User Exists'));  
+                        }else return done(null, false, req.flash('message', 'User exists, use edit'));  
                     } else {
                         var newUser = new User();
                         newUser.email = email;

@@ -91,7 +91,7 @@
 			}
 		}
      	CurrentScroll = NextScroll; 
-});
+	});
 	$("form.no-reload").submit(function( event ) {
         event.preventDefault();
         var $form = $( this ),

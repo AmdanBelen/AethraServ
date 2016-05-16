@@ -18,7 +18,7 @@
         });
     });
 
-    $("form.no-reload").reset(function( event ) {
+    $("form.no-reload").on("reset",function( event ) {
         var $form = $(this);
         $("input[name='username']",$form).prop('disabled', false);
      	$("input[name='password']",$form).prop('disabled', false);

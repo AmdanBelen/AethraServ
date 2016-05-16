@@ -50,10 +50,7 @@ body
               .error-message #{message}
     include footer
     script
-      (function($) {
         function RefreshTable() {
           $( "table#DataTab" ).load( window.location.href +" table#DataTab" );
         }
-        $("form input#save").on("click", RefreshTable())
-
-      })(jQuery);
+        $("form input#save").on("click", RefreshTable());

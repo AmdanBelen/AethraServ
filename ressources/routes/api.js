@@ -12,6 +12,11 @@ var isAuthenticated = function (req, res, next) {
   res.redirect('/');
 }
 
+var createHash = function(password){
+  return bCrypt.hashSync(password, bCrypt.genSaltSync(10), null);
+}
+
+
 module.exports = function(passport){
 
   router.get('/', function (req, res) {
@@ -31,6 +36,36 @@ module.exports = function(passport){
   router.post('/user/delete/:email',isAuthenticated, function (req, res) {
     var email = req.params.email;
     User.find({email:email}).remove(function(){res.json({message:"Deleted User"})});
+  });
+
+  router.post('/user/add',isAuthenticated, function(req, res) {
+    var email = req.body.username;
+    var password = req.body.password;
+    User.findOne({ 'email' :  email }, function(err, user) {
+      if (err){
+          res.json({message:"Server Error"})
+      }
+      if (user) {
+          User.permission = req.body.permission;
+          User.firstName = req.body.firstName;
+          User.lastName = req.body.lastName;
+          User.save();
+          res.json({message:"User Modified"});
+      } else {
+          var newUser = new User();
+          newUser.email = email;
+          newUser.permission = req.body.permission;
+          newUser.password = createHash(password);
+          newUser.firstName = req.body.firstName;
+          newUser.lastName = req.body.lastName;
+          newUser.save(function(err) {
+              if (err){
+                  throw err;  
+              } 
+              res.json({message:"User Created"})
+          });
+      }
+    });
   });
 
   return router;

@@ -30,7 +30,7 @@ body
                         button#edit(type='button') Edit
             if users
               div(class='12u$')
-        form.no-reload(method='post', action='/admin/manage_users')
+        form.no-reload(method='post', action='/api/user/add')
           .row.uniform(class='50%')
             div(class='3u 12u$(xsmall)')
               input(type='email', name='username', placeholder='Email',required, autofocus)

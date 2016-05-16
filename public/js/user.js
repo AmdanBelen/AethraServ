@@ -8,7 +8,7 @@
 
 
 	function delete_user(mail){
-		var url ='/user/delete/' + mail.;
+		var url ='/api/user/delete/' + mail;
 		var posting = $.post( url, '' );
         posting.done(function( data ) {
         	refresh_table();

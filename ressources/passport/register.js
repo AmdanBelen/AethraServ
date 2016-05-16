@@ -15,7 +15,12 @@ module.exports = function(passport){
                         return done(err);
                     }
                     if (user) {
-                        return done(null, false, req.flash('message','User Already Exists'));
+                        if(req.body.edit){
+                            User.permission = req.body.permission;
+                            User.firstName = req.body.firstName;
+                            User.lastName = req.body.lastName;
+                            User.save();
+                        }else return done(null, false, req.flash('message', 'User Exists'));  
                     } else {
                         var newUser = new User();
                         newUser.email = email;

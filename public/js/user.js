@@ -29,6 +29,16 @@
      	delete_user(mail);
  	});
 
+	$( document ).on( "click", "table#DataTab #edit",  function(event){
+     	var $data = $(this).parents("tr");
+     	var $form = $('form.no-reload');
+     	$("input[name='username']",$form).prop('disabled', true);
+     	$("input[name='password']",$form).prop('disabled', true);
+     	$("input[name='firstName']",$form).val($($data+"nth-child(1)").text());
+     	$("input[name='lastName']",$form).val($($data+"nth-child(2)").text());
+     	$("input[name='permission']",$form).val($($data+"nth-child(3)").text());
+ 	});
+
 	function delete_user(mail){
 		var url ='/api/user/delete/' + mail;
 		var posting = $.post( url, '' );

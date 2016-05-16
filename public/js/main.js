@@ -92,22 +92,6 @@
 		}
      	CurrentScroll = NextScroll; 
 	});
-	$("form.no-reload").submit(function( event ) {
-        event.preventDefault();
-        var $form = $( this ),
-        //term = $form.find( "input[name='s']" ).val(),
-        url = $form.attr( "action" );
-        var posting = $.post( url, $form.serialize() );
-        posting.done(function( data ) {
-        	if(data.error)
-        		$form.reset();
-    		if(data.message) 
-           		$('div > .error-message',$form).text(data.message);
-           	else if(data.redirect)
-           		window.location.href = data.redirect;
-
-        });
-    });
 	
 
 

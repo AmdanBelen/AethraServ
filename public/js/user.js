@@ -40,6 +40,7 @@
      	$("input[name='username']",$form).prop('disabled', true);
      	$("input[name='password']",$form).prop('disabled', true);
      	$("input[name='username']",$form).val($data.eq(0).text());
+     	$("input[name='password']",$form).removeAttr('value');
      	$("input[name='firstName']",$form).val($data.eq(1).text());
      	$("input[name='lastName']",$form).val($data.eq(2).text());
      	$("input[name='permission']",$form).val($data.eq(3).text());

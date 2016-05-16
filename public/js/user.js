@@ -30,7 +30,7 @@
  	});
 
 	$( document ).on( "click", "table#DataTab #edit",  function(event){
-     	var $data = $(this).parents("tr");
+     	var $data = $(this).parents("tr").children();
      	console.log($data);
      	var $form = $('form.no-reload');
      	$("input[name='username']",$form).prop('disabled', true);

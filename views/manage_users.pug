@@ -25,7 +25,7 @@ body
                   td
                     ul.actions
                       li
-                        button#delete(type='button') Delete
+                        button#delete(type='button' onclick='function(event){console.log($(this).parents("tr").children().first().text());}') Delete
                       li
                         button#edit(type='button') Edit
             if users
@@ -54,4 +54,3 @@ body
           $( "table#DataTab" ).load( window.location.href +" table#DataTab" );
         }
         $("form input#save").on("click", function(event){$( "table#DataTab" ).load( window.location.href +" table#DataTab" );});
-        $("table#DataTab button#delete").on("click",function(event){console.log($(this).parents("tr").children().first().text());});

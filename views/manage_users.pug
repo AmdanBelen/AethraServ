@@ -7,20 +7,27 @@ body
       .container
         h4 User Management
         .table-wrapper
-          table.alt
+          table.alt#DataTab
             thead
               tr
                 th Email
                 th First Name
                 th Last Name
                 th Perm Level
+                td Action
             tbody
               each user in users 
                 tr
-                  td #{user.email}
+                  td #{user.username}
                   td #{user.firstName}
                   td #{user.lastName}
                   td #{user.permission}
+                  td
+                    ul.actions
+                      li
+                        button#delete(type='button') Delete
+                      li
+                        button#edit(type='button') Edit
             if users
               div(class='12u$')
         form.no-reload(method='post', action='/admin/manage_users')
@@ -36,9 +43,17 @@ body
             div(class='12u$')
               ul.actions
                 li
-                  input.special(type='submit', value='Save')
+                  input.special#save(type='submit', value='Save')
                 li
                   input(type='reset', value='Reset')
             div(class='12u$')
               .error-message #{message}
     include footer
+    script
+      (function($) {
+        function RefreshTable() {
+          $( "table#DataTab" ).load( window.location.href +" table#DataTab" );
+        }
+      $("form input#save").on("click", RefreshTable());
+
+      })(jQuery);

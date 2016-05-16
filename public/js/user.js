@@ -21,9 +21,9 @@
 	function refresh_table() {
 		var $table =  $( "table#DataTab" );
        $table.load( window.location.href +" table#DataTab" );
-       $('#delete',$table).on("click", delete_user($(this).parents("tr").children().first().text()));
     };
 
+     $('#delete',$table).on("click", delete_user($(this).parents("tr").children().first().text()));
 
 	function delete_user(mail){
 		console.log(mail);

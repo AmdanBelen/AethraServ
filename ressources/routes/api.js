@@ -3,15 +3,23 @@ var router = express.Router();
 var User = require('../models/account');
 var bCrypt = require('bcrypt-nodejs');
 
-var isAuthenticated = function (req, res, next) {
-  // if user is authenticated in the session, call the next() to call the next request handler 
-  // Passport adds this method to request object. A middleware is allowed to add properties to
-  // request and response objects
-  if (req.isAuthenticated())
-    return next();
-  // if the user is not authenticated then redirect him to the login page
-  res.redirect('/');
-}
+
+var auth = {
+      authenticated: function () {
+        return function (req, res, next) {
+          if (req.isAuthenticated())
+            return next();
+          res.json({message:"Not Authenticated"});
+        };
+      },
+      perm: function(level){
+        if(!level) level=0;
+        if(req.user.permission>=level)
+          return next();
+        res.json({message:"Not Autorized"});
+      }
+    }
+
 
 var createHash = function(password){
   return bCrypt.hashSync(password, bCrypt.genSaltSync(10), null);
@@ -24,7 +32,7 @@ module.exports = function(passport){
     res.json({message:'Welcome to the API'});
   });
 
-  router.get('/users',isAuthenticated, function (req, res) {
+  router.get('/users',auth.authenticated, function (req, res) {
   	User.find({}, function(err, users) {
     	//var userMap = {};
     	//users.forEach(function(user) {
@@ -34,12 +42,12 @@ module.exports = function(passport){
   	});
   });
 
-  router.post('/user/delete/:email',isAuthenticated, function (req, res) {
+  router.post('/user/delete/:email',auth.authenticated, function (req, res) {
     var email = req.params.email;
     User.find({email:email}).remove(function(){res.json({message:"Deleted User"})});
   });
 
-  router.post('/user/add',isAuthenticated, function(req, res) {
+  router.post('/user/add',auth.authenticated, function(req, res) {
     var email = req.body.username;
     var password = req.body.password;
     User.findOne({ 'email' :  email }, function(err, user) {

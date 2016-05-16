@@ -1,11 +1,11 @@
 (function($) {
 
-	var refresh_table = function () {
+	function refresh_table() {
         $( "table#DataTab" ).load( window.location.href +" table#DataTab" );
     };
 
 
-	var delete_user = function($mail){
+	function delete_user($mail){
 		var url ='/user/delete/' + $mail.parents("tr").children().first().text();
 		var posting = $.post( url, '' );
         posting.done(function( data ) {

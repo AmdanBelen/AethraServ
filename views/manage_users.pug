@@ -51,4 +51,4 @@ body
     include footer
     script(src='/js/user.js')
     script.
-        $("form input#save").on("click", function(event){$( "table#DataTab" ).load( window.location.href +" table#DataTab" );});
+        $("form input#save").on("click", function(){refresh_table();});

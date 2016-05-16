@@ -28,5 +28,10 @@ module.exports = function(passport){
   	});
   });
 
+  router.post('/user/delete/:email',isAuthenticated, function (req, res) {
+    var email = req.params.email;
+    User.find({email:email}).remove(function(){res.json({message:"Deleted User"})});
+  });
+
   return router;
 }

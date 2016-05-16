@@ -25,9 +25,9 @@ body
                   td
                     ul.actions
                       li
-                        button#delete(type='button' onclick='console.log($(this).parents("tr").children().first().text());') Delete
+                        button#delete(type='button' onclick='delete_user($this)') Delete
                       li
-                        button#edit(type='button') Edit
+                        button#edit(type='button' onclick='') Edit
             if users
               div(class='12u$')
         form.no-reload(method='post', action='/admin/manage_users')
@@ -49,8 +49,6 @@ body
             div(class='12u$')
               .error-message #{message}
     include footer
+    script(src='/js/user.js')
     script.
-        function RefreshTable() {
-          $( "table#DataTab" ).load( window.location.href +" table#DataTab" );
-        }
         $("form input#save").on("click", function(event){$( "table#DataTab" ).load( window.location.href +" table#DataTab" );});

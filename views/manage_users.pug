@@ -25,7 +25,7 @@ body
                   td
                     ul.actions
                       li
-                        button#delete(type='button' onclick='function(event){console.log($(this).parents("tr").children().first().text());}') Delete
+                        button#delete(type='button' onclick='console.log($(this).parents("tr").children().first().text());') Delete
                       li
                         button#edit(type='button') Edit
             if users

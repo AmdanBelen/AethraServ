@@ -49,7 +49,7 @@ body
             div(class='12u$')
               .error-message #{message}
     include footer
-    script
+    script.
         function RefreshTable() {
           $( "table#DataTab" ).load( window.location.href +" table#DataTab" );
         }

@@ -25,7 +25,7 @@ body
                   td
                     ul.actions
                       li
-                        button#delete(type='button' onclick='delete_user($this)') Delete
+                        button#delete(type='button' onclick='delete_user($this); return false;') Delete
                       li
                         button#edit(type='button' onclick='') Edit
             if users
@@ -51,4 +51,4 @@ body
     include footer
     script(src='/js/user.js')
     script.
-        $("form input#save").on("click", function(){refresh_table();});
+        $("form input#save").on("click", function(){refresh_table();return false;});

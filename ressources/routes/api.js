@@ -4,21 +4,22 @@ var User = require('../models/account');
 var bCrypt = require('bcrypt-nodejs');
 
 
-var auth = {
-      authenticated: function () {
-        return function (req, res, next) {
-          if (req.isAuthenticated())
-            return next();
-          res.json({message:"Not Authenticated"});
-        };
-      },
-      perm: function(level){
-        if(!level) level=0;
-        if(req.user.permission>=level)
-          return next();
-        res.json({message:"Not Autorized"});
-      }
-    }
+
+var IsAuthenticated = function () {
+  return function (req, res, next) {
+    if (req.isAuthenticated())
+      return next();
+    res.json({message:"Not Authenticated"});
+  };
+};
+var HasPerm = function(level){
+  return function(req,res,next){
+    if(!level) level=0;
+    if(req.user.permission>=level)
+      return next();
+    res.json({message:"Not Autorized"});
+  };
+};
 
 
 var createHash = function(password){
@@ -32,7 +33,7 @@ module.exports = function(passport){
     res.json({message:'Welcome to the API'});
   });
 
-  router.get('/users',auth.authenticated, function (req, res) {
+  router.get('/users',IsAuthenticated, function (req, res) {
   	User.find({}, function(err, users) {
     	//var userMap = {};
     	//users.forEach(function(user) {
@@ -42,12 +43,12 @@ module.exports = function(passport){
   	});
   });
 
-  router.post('/user/delete/:email',auth.authenticated, function (req, res) {
+  router.post('/user/delete/:email',IsAuthenticated, function (req, res) {
     var email = req.params.email;
     User.find({email:email}).remove(function(){res.json({message:"Deleted User"})});
   });
 
-  router.post('/user/add',auth.authenticated, function(req, res) {
+  router.post('/user/add',IsAuthenticated, function(req, res) {
     var email = req.body.username;
     var password = req.body.password;
     User.findOne({ 'email' :  email }, function(err, user) {

@@ -21,10 +21,10 @@ body
                     a(href='#{url}') #{url}      
         else 
           form.no-reload(method='post', action='/')
-            .row.uniform(class='50%')
-              div(class='5uu 12u$(xsmall)')
-                input(type='email', name='username', placeholder='Email',required, autofocus)
-              div(class='4u 12u$')
+            .uniform(class='50%')
+              div(class='5u 12u$(xsmall)')
+                input(type='email', name='url', placeholder='URL',required, autofocus)
+              div(class='12u$')
                 ul.actions
                   li
                     input.special(type='submit', value='Make it tiny')

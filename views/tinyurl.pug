@@ -6,29 +6,29 @@ body
     section#one.main.style1.special
       .container
         h4 TinyURL
-        .table-wrapper
-          table.alt#DataTab
-            thead
-              tr
-                th Link
-                th URL
-            tbody
-              if turl
+        if url&&id
+          .table-wrapper
+            table.alt#DataTab
+              thead
+                tr
+                  th Link
+                  th URL
+              tbody
                 tr
                   td 
-                    a(href='#{link}') #{link}
+                    a(href='#{id}') #{id}
                   td 
-                    a(href='#{turl.url}') #{turl.url}      
-        form.no-reload(method='post', action='/')
-          .row.uniform(class='50%')
-            div(class='3u 12u$(xsmall)')
-              input(type='email', name='username', placeholder='Email',required, autofocus)
-            div(class='12u$')
-              ul.actions
-                li
-                  input.special#save(type='submit', value='Make it tiny')
-            div(class='12u$')
-              .error-message #{message}
+                    a(href='#{url}') #{url}      
+        else 
+          form.no-reload(method='post', action='/')
+            .row.uniform(class='50%')
+              div(class='5uu 12u$(xsmall)')
+                input(type='email', name='username', placeholder='Email',required, autofocus)
+              div(class='4u 12u$')
+                ul.actions
+                  li
+                    input.special(type='submit', value='Make it tiny')
+              div(class='12u$')
+                .error-message #{message}
     include footer
-    script(src='/js/user.js')
        

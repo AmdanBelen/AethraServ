@@ -13,10 +13,10 @@ function randomString() {
 	return randomstring;
 }
 
-module.exports = function (){
+module.exports = function (passport){
 
   router.get('/', function (req, res) {
-    res.render('tinyurl', { title: 'Me'});
+    res.render('tinyurl', { title: 'TinyURL'});
   });
 
   router.get('/:id', function (req, res){
@@ -44,8 +44,8 @@ module.exports = function (){
       if (err){
           res.json({message:"Server Error"});
       }
-      if (result) {  
-        res.json({url:url,id:"url.aethra.io/"+result.id});
+      if (result) {
+        id = result.id;
       } else {
           var newTUrl = new Tinyurl();
           newTUrl.url = url;
@@ -53,10 +53,10 @@ module.exports = function (){
           newUser.save(function(err) {
             if (err){
                 throw err;  
-            } 
-            res.json({url:url,id:"url.aethra.io/"+id});
+            }
           });
       }
+      res.render('tinyurl', { title: 'TinyURL',id:"url.aethra.io/"+id,url:url});
     });
   });
 

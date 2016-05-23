@@ -1,0 +1,33 @@
+doctype html
+html
+  include head
+body
+    //include simple_header
+    section#one.main.style1.special
+      .container
+        h4 TinyURL
+        .table-wrapper
+          table.alt#DataTab
+            thead
+              tr
+                th Link
+                th URL
+            tbody
+              tr
+                td 
+                  a(href='#{link}') #{link}
+                td 
+                  a(href='#{turl.url}') #{turl.url}
+        form.no-reload(method='post', action='/')
+          .row.uniform(class='50%')
+            div(class='3u 12u$(xsmall)')
+              input(type='email', name='username', placeholder='Email',required, autofocus)
+            div(class='12u$')
+              ul.actions
+                li
+                  input.special#save(type='submit', value='Make it tiny')
+            div(class='12u$')
+              .error-message #{message}
+    include footer
+    script(src='/js/user.js')
+       

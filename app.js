@@ -72,9 +72,11 @@ initPassport(passport);
 
 var routes = require('./ressources/routes/index')(passport);
 var admin = require('./ressources/routes/admin')((passport));
-var api = require('./ressources/routes/api')((passport));
+var api = require('./ressources/routes/api')(passport);
+var tinyurl = require('./ressources/routes/tinyurl');
 app.use('/', routes);
 app.use('/api',api);
+app.use('/url',tinyurl);
 app.use('/admin', admin);
 
 // catch 404 and forward to error handler

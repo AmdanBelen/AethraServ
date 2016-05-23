@@ -50,7 +50,7 @@ module.exports = function (passport){
           var newTUrl = new Tinyurl();
           newTUrl.url = url;
           newTUrl.id = id;
-          newUser.save(function(err) {
+          newTUrl.save(function(err) {
             if (err){
                 throw err;  
             }

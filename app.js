@@ -71,9 +71,9 @@ initPassport(passport);
 
 
 var routes = require('./ressources/routes/index')(passport);
-var admin = require('./ressources/routes/admin')((passport));
+var admin = require('./ressources/routes/admin')(passport);
 var api = require('./ressources/routes/api')(passport);
-var tinyurl = require('./ressources/routes/tinyurl');
+var tinyurl = require('./ressources/routes/tinyurl')(passport);
 app.use('/', routes);
 app.use('/api',api);
 app.use('/url',tinyurl);

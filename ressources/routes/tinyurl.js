@@ -13,7 +13,7 @@ function randomString() {
 	return randomstring;
 }
 
-module.exports = function(){
+module.exports = function (){
 
   router.get('/', function (req, res) {
     res.render('tinyurl', { title: 'Me'});

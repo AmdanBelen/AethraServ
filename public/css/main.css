@@ -2026,6 +2026,7 @@
 	input[type="password"],
 	input[type="email"],
 	input[type="number"],
+	input[type="url"],
 	select,
 	textarea {
 		-moz-appearance: none;
@@ -2047,6 +2048,7 @@
 		input[type="password"]:disabled,
 		input[type="email"]:disabled,
 		input[type="number"]:disabled,
+		input[type="url"]:disabled,
 		select:disabled,
 		textarea:disabled {
 			cursor: default;
@@ -2057,6 +2059,7 @@
 		input[type="password"]:read-only,
 		input[type="email"]:read-only,
 		input[type="number"]:read-only,
+		input[type="url"]:read-only,
 		select:readonly,
 		textarea:readonly {
 			cursor: default;
@@ -2068,6 +2071,7 @@
 		input[type="password"]:invalid,
 		input[type="email"]:invalid,
 		input[type="number"]:invalid,
+		input[type="url"]:invalid,
 		select:invalid,
 		textarea:invalid {
 			box-shadow: none;
@@ -2077,6 +2081,7 @@
 		input[type="password"]:focus,
 		input[type="email"]:focus,
 		input[type="number"]:focus,
+		input[type="url"]:focus,
 		select:focus,
 		textarea:focus {
 			border-color: #6bd4c8;
@@ -2119,6 +2124,7 @@
 	input[type="password"],
 	input[type="email"],
 	input[type="number"],
+	input[type="url"],
 	select {
 		height: 2.75em;
 	}

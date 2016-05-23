@@ -20,7 +20,7 @@ body
                   td 
                     a(href='#{url}') #{url}      
         else 
-          form.no-reload(method='post', action='/')
+          form.no-reload(method='post', action='/url')
             .uniform(class='50%')
               div(class='5u 12u$(xsmall)' style="margin-bottom:1em;margin-left:auto;")
                 input(type='url', name='url', placeholder='URL',required, autofocus)

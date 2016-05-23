@@ -13,11 +13,12 @@ body
                 th Link
                 th URL
             tbody
-              tr
-                td 
-                  a(href='#{link}') #{link}
-                td 
-                  a(href='#{turl.url}') #{turl.url}
+              if turl
+                tr
+                  td 
+                    a(href='#{link}') #{link}
+                  td 
+                    a(href='#{turl.url}') #{turl.url}      
         form.no-reload(method='post', action='/')
           .row.uniform(class='50%')
             div(class='3u 12u$(xsmall)')

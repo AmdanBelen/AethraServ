@@ -56,7 +56,7 @@ module.exports = function (passport){
             }
           });
       }
-      res.render('tinyurl', { title: 'TinyURL',id:"url.aethra.io/"+id,url:url});
+      res.render('tinyurl', { title: 'TinyURL',id:"http://url.aethra.io/"+id,url:url});
     });
   });
 

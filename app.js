@@ -86,7 +86,20 @@ app.use(vhost('wiki.aethra.io', expressWiki({
     datastore: new ExpressWikiMongoose({
         mongoose: mongoose,
         modelName:'WikiRecord'//Optional
-    })
+    }),
+    routes:{
+        show:function(req, res, next){
+            if(!req.wiki.html){
+                return res.status(404).render('wiki/show', {
+                    title: 'Page not found'
+                });
+            }
+            return res.render('wiki/show', {
+                html:req.wiki.html,
+                title: req.wiki.record.title
+            });
+        }
+    }
 })));
 app.use('/', routes);
 

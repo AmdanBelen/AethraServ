@@ -17,7 +17,7 @@ html
               else
                 input(type="text", readonly="true", value=wiki.curr_path, placeholder="Path", required)
             div(class='12u 12u$(xsmall)')
-              textarea(name="markdown") #{markdown}
+              textarea(name="markdown", placeholder="HTML Article", required) #{markdown}
             div(class='12u$')
                 ul.actions
                   li

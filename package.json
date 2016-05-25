@@ -14,6 +14,7 @@
     "express": "^4.13.0",
     "express-mailer": "^0.3.0",
     "express-session": "^1.13.0",
+    "express-wiki-mongoose": "^1.0.1",
     "mongoose": "^4.4.16",
     "morgan": "^1.6.0",
     "nib": "^1.1.0",

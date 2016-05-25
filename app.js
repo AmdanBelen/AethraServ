@@ -4,6 +4,7 @@
 var express = require('express');
 var vhost = require('vhost');
 var mailer = require('express-mailer');
+var ExpressWikiMongoose = require('express-wiki-mongoose');
 var mongoose = require('mongoose');
 var path = require('path');
 var logger = require('morgan');
@@ -80,6 +81,12 @@ app.use('/api',api);
 app.use('/admin', admin);
 app.use('/url',tinyurl);
 app.use(vhost('url.aethra.io',tinyurl));
+app.use(vhost('wiki.aethra.io', expressWiki({
+    datastore: new ExpressWikiMongoose({
+        mongoose: mongoose,
+        modelName:'WikiRecord'//Optional
+    })
+})));
 app.use('/', routes);
 
 

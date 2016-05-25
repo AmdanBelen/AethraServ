@@ -4,8 +4,6 @@
 var express = require('express');
 var vhost = require('vhost');
 var mailer = require('express-mailer');
-var expressWiki = require('express-wiki');
-var ExpressWikiMongoose = require('express-wiki-mongoose');
 var mongoose = require('mongoose');
 var path = require('path');
 var logger = require('morgan');
@@ -76,31 +74,14 @@ initPassport(passport);
 var routes = require('./ressources/routes/index')(passport);
 var admin = require('./ressources/routes/admin')(passport);
 //var admin = require('sriracha-admin');
+var wiki = require('./ressources/routes/wiki')(passport);
 var api = require('./ressources/routes/api')(passport);
 var tinyurl = require('./ressources/routes/tinyurl')(passport);
 app.use('/api',api);
 app.use('/admin', admin);
 app.use('/url',tinyurl);
 app.use(vhost('url.aethra.io',tinyurl));
-app.use(vhost('wiki.aethra.io', expressWiki({
-    datastore: new ExpressWikiMongoose({
-        mongoose: mongoose,
-        modelName:'WikiRecord'//Optional
-    }),
-    routes:{
-        show:function(req, res, next){
-            if(!req.wiki.html){
-                return res.status(404).render('wiki/show', {
-                    title: 'Page not found'
-                });
-            }
-            return res.render('wiki/show', {
-                html:req.wiki.html,
-                title: req.wiki.record.title
-            });
-        }
-    }
-})));
+app.use(vhost('wiki.aethra.io', wiki));
 app.use('/', routes);
 
 

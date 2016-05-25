@@ -1,19 +1,22 @@
+doctype html
 html
-  head
-    title Edit #{title}
-
+  include head
   body
-    form(method="post", action=wiki.curr_url)
-      |Title: 
-      input(type="text", name="title", value=title)
-      br
-      |Path:
-      if is_new
-        input(type="text", name="path", value=wiki.curr_path)
-      else
-        input(type="text", readonly="true", value=wiki.curr_path)
-      br
-      |Body:
-      textarea(name="markdown") #{markdown}
-      br
-      button(type="submit", value="Save")
+    include simple_header
+    section#one.main.style1.special
+      .container
+        form(method="post", action=wiki.curr_url)
+          |Title: 
+          input(type="text", name="title", value=title)
+          br
+          |Path:
+          if is_new
+            input(type="text", name="path", value=wiki.curr_path)
+          else
+            input(type="text", readonly="true", value=wiki.curr_path)
+          br
+          |Body:
+          textarea(name="markdown") #{markdown}
+          br
+          button(type="submit", value="Save")
+    include footer

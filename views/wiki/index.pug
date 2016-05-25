@@ -1,10 +1,14 @@
+doctype html
 html
-  head
-    title #{title}
+  include head
   body
-    p #{title}
-    |Records:
-    br
-    if records
-      a(href=full_path) #{title}
-      br
+    include simple_header
+    section#one.main.style1.special
+      .container
+        p #{title}
+        |Records:
+        br
+        if records
+          a(href=full_path) #{title}
+          br
+    include footer

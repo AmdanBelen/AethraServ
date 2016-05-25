@@ -28,7 +28,7 @@ var createHash = function(password){
 module.exports = function(passport){
 
   router.get('/', function (req, res) {
-    res.json({message:'Welcome to the wiki'});
+    res.render('wiki/index',{title:'test'});
   });
 
   router.use(expressWiki({

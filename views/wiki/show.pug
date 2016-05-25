@@ -1,13 +1,16 @@
+doctype html
 html
-  head
-    title #{title}
+  include head
+body
+    include simple_header
+    section#one.main.style1.special
+      .container
+        p #{title}
+        if html
+          #{html}
 
-  body
-    p #{title}
-    if html
-      #{html}
-
-    br
-    a(href=wiki.edit_url) Edit #{wiki.curr_path}
-    |or
-    a(href=wiki.new_url) Create a new post
+        br
+        a(href=wiki.edit_url) Edit #{wiki.curr_path}
+        | or 
+        a(href=wiki.new_url) Create a new post
+    include footer

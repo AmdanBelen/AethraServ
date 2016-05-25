@@ -12,7 +12,6 @@ html
         input(type="text", name="path", value=wiki.curr_path)
       else
         input(type="text", readonly="true", value=wiki.curr_path)
-      {{/is_new}}
       br
       |Body:
       textarea(name="markdown") #{markdown}

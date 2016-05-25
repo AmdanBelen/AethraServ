@@ -5,10 +5,9 @@ html
     include ../simple_header.pug
     section#one.main.style1.special
       .container
-        p #{title}
+        h2 #{title}
         if html
           |!{html}
-
         br
         a(href=wiki.edit_url) Edit #{wiki.curr_path} 
         |&nbsp;or 

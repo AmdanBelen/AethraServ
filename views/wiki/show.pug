@@ -7,10 +7,10 @@ html
       .container
         p #{title}
         if html
-          #{html}
+          |#{html}
 
         br
-        a(href=wiki.edit_url) Edit #{wiki.curr_path}
-        | or 
+        a(href=wiki.edit_url) Edit #{wiki.curr_path} 
+        |&nbsp;or 
         a(href=wiki.new_url) Create a new post
     include ../footer.pug

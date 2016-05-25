@@ -6,15 +6,16 @@ html
     section#one.main.style1.special
       .container
         form(method="post", action=wiki.curr_url)
-          .uniform(class='50%')  
-            div(class='12u 12u$(xsmall)')
-              |Title:
-              input(type="text", name="title", value=title, required)
-              |Path:
+          .row.uniform(class='50%')  
+            div(class='6u 12u$(xsmall)')
+              |Title
+              input(type="text", name="title", value, placeholder=title, required)
+            div(class='6u 12u$(xsmall)')
+              |Path
               if is_new
-                input(type="text", name="path", value=wiki.curr_path, required)
+                input(type="text", name="path", value, placeholder=wiki.curr_path, required)
               else
-                input(type="text", readonly="true", value=wiki.curr_path, required)
+                input(type="text", readonly="true", value, placeholder=wiki.curr_path, required)
             div(class='12u 12u$(xsmall)')
               textarea(name="markdown") #{markdown}
             div(class='12u$')

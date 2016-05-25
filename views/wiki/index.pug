@@ -1,8 +1,8 @@
 doctype html
 html
-  include head
+  include ../head
   body
-    include simple_header
+    include ../simple_header
     section#one.main.style1.special
       .container
         p #{title}
@@ -11,4 +11,4 @@ html
         if records
           a(href=full_path) #{title}
           br
-    include footer
+    include ../footer

@@ -1,8 +1,8 @@
 doctype html
 html
-  include head
+  include ../head
   body
-    include simple_header
+    include ../simple_header
     section#one.main.style1.special
       .container
         form(method="post", action=wiki.curr_url)
@@ -19,4 +19,4 @@ html
           textarea(name="markdown") #{markdown}
           br
           button(type="submit", value="Save")
-    include footer
+    include ../footer

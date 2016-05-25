@@ -1,8 +1,8 @@
 doctype html
 html
-  include head
+  include ../head
 body
-    include simple_header
+    include ../simple_header
     section#one.main.style1.special
       .container
         p #{title}
@@ -13,4 +13,4 @@ body
         a(href=wiki.edit_url) Edit #{wiki.curr_path}
         | or 
         a(href=wiki.new_url) Create a new post
-    include footer
+    include ../footer

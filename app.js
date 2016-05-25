@@ -4,6 +4,7 @@
 var express = require('express');
 var vhost = require('vhost');
 var mailer = require('express-mailer');
+var expressWiki = require('express-wiki');
 var ExpressWikiMongoose = require('express-wiki-mongoose');
 var mongoose = require('mongoose');
 var path = require('path');

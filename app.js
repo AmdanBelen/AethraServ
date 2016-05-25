@@ -72,8 +72,8 @@ initPassport(passport);
 
 
 var routes = require('./ressources/routes/index')(passport);
-//var admin = require('./ressources/routes/admin')(passport);
-var admin = require('sriracha-admin');
+var admin = require('./ressources/routes/admin')(passport);
+//var admin = require('sriracha-admin');
 var api = require('./ressources/routes/api')(passport);
 var tinyurl = require('./ressources/routes/tinyurl')(passport);
 app.use('/', routes);
@@ -81,7 +81,7 @@ app.use('/api',api);
 app.use('/url',tinyurl);
 app.use(vhost('url.aethra.io',tinyurl));
 app.use(vhost('url.web-soragna.rhcloud.com',tinyurl));
-app.use('/admin', admin());
+app.use('/admin', admin;
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

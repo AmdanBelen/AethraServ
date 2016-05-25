@@ -3,15 +3,15 @@ html
     title Edit #{title}
 
   body
-    form(method="post" action=wiki.curr_url)
+    form(method="post", action=wiki.curr_url)
       |Title: 
-      input(type="text" name="title" value=title)
+      input(type="text", name="title", value=title)
       br
       |Path:
       if is_new
-        input(type="text" name="path" value=wiki.curr_path)
+        input(type="text", name="path", value=wiki.curr_path)
       else
-        input(type="text" readonly="true" value=wiki.curr_path)
+        input(type="text", readonly="true", value=wiki.curr_path)
       {{/is_new}}
       br
       |Body:

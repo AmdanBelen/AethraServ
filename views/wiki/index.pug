@@ -1,0 +1,10 @@
+html
+  head
+    title #{title}
+  body
+    p #{title}
+    |Records:
+    br
+    if records
+      a(href=full_path) #{title}
+      br

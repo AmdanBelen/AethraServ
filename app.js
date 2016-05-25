@@ -80,6 +80,7 @@ app.use('/', routes);
 app.use('/api',api);
 app.use('/url',tinyurl);
 app.use(vhost('url.aethra.io',tinyurl));
+app.use(vhost('url.www.aethra.io',tinyurl));
 app.use(vhost('url.web-soragna.rhcloud.com',tinyurl));
 app.use('/admin', admin);
 

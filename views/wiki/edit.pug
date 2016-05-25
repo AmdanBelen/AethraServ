@@ -7,14 +7,15 @@ html
       .container
         form(method="post", action=wiki.curr_url)
           .uniform(class='50%')  
-            div(class='5u 12u$(xsmall)')
+            div(class='12u 12u$(xsmall)')
+              |Title:
               input(type="text", name="title", value=title, required)
-            div(class='5u 12u$(xsmall)')
+              |Path:
               if is_new
                 input(type="text", name="path", value=wiki.curr_path, required)
               else
                 input(type="text", readonly="true", value=wiki.curr_path, required)
-            div(class='5u 12u$(xsmall)')
+            div(class='12u 12u$(xsmall)')
               textarea(name="markdown") #{markdown}
             div(class='12u$')
                 ul.actions

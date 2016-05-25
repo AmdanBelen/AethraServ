@@ -5,11 +5,18 @@ html
     include ../simple_header.pug
     section#one.main.style1.special
       .container
-        h2 #{title}
-        if html
-          |!{html}
-        br
-        a(href=wiki.edit_url) Edit #{wiki.curr_path} 
-        |&nbsp;or 
-        a(href=wiki.new_url) Create a new post
+         #content
+          article
+            header
+              h2 #{title}
+              if subtitle
+                p #{subtitle}
+            span.image.featured
+              img(src='images/banner.jpg', alt='')
+            if html
+              |!{html}
+            br
+            a(href=wiki.edit_url) Edit #{wiki.curr_path} 
+            |&nbsp;or 
+            a(href=wiki.new_url) Create a new post
     include ../footer.pug

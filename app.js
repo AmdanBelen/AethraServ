@@ -81,7 +81,7 @@ app.use('/api',api);
 app.use('/url',tinyurl);
 app.use(vhost('url.aethra.io',tinyurl));
 app.use(vhost('url.web-soragna.rhcloud.com',tinyurl));
-app.use('/admin', admin;
+app.use('/admin', admin);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

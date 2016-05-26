@@ -1,8 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
-var expressWiki = require('express-wiki');
-var ExpressWikiMongoose = require('express-wiki-mongoose');
+var DB = require('../wiki/handler');
 
 
 var IsAuthenticated = function (req, res, next) {
@@ -30,13 +29,28 @@ module.exports = function(passport){
   router.get('/', function (req, res) {
     res.render('wiki/index',{title:'test'});
   });
+  router.get('/:page', function (req, res) {
+    var page = req.params.page
+    //get data
+    res.render('wiki/show',{title:page});
+  });
+  router.get('/:page/edit', function (req, res) {
+    var page = req.params.page
+    //get data
+    res.render('wiki/edit',{title:page});
+  });
+  router.post('/:page', function (req, res) {
+    var page = req.params.page
+    //update data
+    res.redirect("/" + req.params.page);
+  });
 
-  router.use(expressWiki({
+  /*router.use(expressWiki({
     datastore: new ExpressWikiMongoose({
         	mongoose: mongoose,
         	modelName:'WikiRecord'//Optional
     	})
-	}));
+	}));*/
 
   return router;
 }

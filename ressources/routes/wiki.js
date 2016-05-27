@@ -30,19 +30,22 @@ module.exports = function(passport){
     res.render('wiki/index',{title:'test'});
   });
   router.get('/:page', function (req, res) {
-    var page = req.params.page
-    //get data
-    res.render('wiki/show',{title:page});
+    DB.loadPage(req.params.name, function (err, page) {
+      if (err) return next(err);
+      res.render('view', page);
+    });
   });
   router.get('/:page/edit', function (req, res) {
-    var page = req.params.page
-    //get data
-    res.render('wiki/edit',{title:page});
+    DB.loadPage(req.params.name, function (err, page) {
+      if (err) return next(err);
+      res.render('edit', page);
+    });
   });
   router.post('/:page', function (req, res) {
-    var page = req.params.page
-    //update data
-    res.redirect("/" + req.params.page);
+    DB.savePage(req.params.name, req.body.markdown, function (err) {
+      if (err) return next(err)
+      res.redirect("/" + req.params.name);
+    });
   });
 
   /*router.use(expressWiki({

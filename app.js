@@ -40,11 +40,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, './public')));
-app.use(stylus.middleware({
-  src: __dirname + '/ressources',
-  dest: __dirname + '/public',
-  compile:compile
-}));
 app.set('views', './views');
 app.set('view engine', 'pug');
 app.set('trust proxy', true);

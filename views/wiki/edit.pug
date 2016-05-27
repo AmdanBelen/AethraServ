@@ -9,9 +9,11 @@ html
         form(method="post", action="/" + name)
           .row.uniform(class='50%')  
             div(class='12u 12u$(xsmall)')
-              textarea(name="markdown", placeholder="Markdown Text", required) #{markdown}
+              textarea#markdown(name="markdown", placeholder="Markdown Text", required) #{markdown}
             div(class='12u$')
                 ul.actions
                   li
                     input.special(type="submit", value="Save")
+    script
+      var simplemde = new SimpleMDE({ element: $("#markdown")[0] });
     include ../footer.pug

@@ -11,7 +11,7 @@ exports.loadPage = function (name, callback) {
     }
     if (wik) {
       exists=true;
-      markdown=Wiki.text;
+      markdown=wik.text;
     }else{
       markdown = "# " + name.replace(/_/g, " ") +"\n\n" + "This page does not exist yet.";
     }

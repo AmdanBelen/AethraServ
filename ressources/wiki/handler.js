@@ -1,6 +1,5 @@
 var Wiki = require('../models/wiki');
 var Markdown = require('markdown').markdown;
-//var MDE = require('bootstrap-markdown');
 
 
 
@@ -34,7 +33,6 @@ exports.loadPage = function (name, callback) {
       exists: exists,
       markdown: markdown,
       html: html,
-      MDE: MDE,
     });
   });
 };

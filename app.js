@@ -9,7 +9,6 @@ var path = require('path');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var stylus = require('stylus');
 var nib =  nib = require('nib');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
@@ -35,12 +34,6 @@ mailer.extend(app, {
         pass: process.env.OPENSHIFT_NODEJS_EMAIL_PSWD
     }
 });
-
-function compile(str, path) {
-  return stylus(str)
-    .set('filename', path)
-    .use(nib());
-}
 
 app.use(logger('short'));
 app.use(bodyParser.json());

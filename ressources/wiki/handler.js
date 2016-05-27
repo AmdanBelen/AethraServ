@@ -40,14 +40,12 @@ exports.loadPage = function (name, callback) {
 exports.savePage = function (name, value, callback) {
   Wiki.findOne({ 'page' :  name }, function(err, wik) {
     if (err){
-      throw err;  
+      return callback(err);  
     }
     if (wik) {
         //Wiki.page = name;
         wik.text = value;
-        wik.save(function(err) {
-          if (err) { return next(err); }
-        });
+        wik.save();
         //}else return done(null, false, req.flash('message', 'User exists, use edit'));  
     } else {
         var newWiki = new Wiki();

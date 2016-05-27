@@ -2,7 +2,6 @@ var Wiki = require('../models/wiki');
 var Markdown = require('markdown').markdown;
 
 
-
 // Load a file, parse the title and generate the HTML
 exports.loadPage = function (name, callback) {
   var exists= false;

@@ -1,6 +1,7 @@
 var Wiki = require('../models/wiki');
 var Markdown = require('markdown').markdown;
-var MDE = require('simplemde');
+//var MDE = require('simplemde');
+var MDE = "";
 
 
 // Load a file, parse the title and generate the HTML

@@ -40,7 +40,7 @@ exports.loadPage = function (name, callback) {
 exports.savePage = function (name, value, callback) {
   Wiki.findOne({ 'page' :  name }, function(err, wik) {
     if (err){
-      return callback(err);  
+      callback(err);  
     }
     if (wik) {
         //Wiki.page = name;
@@ -54,9 +54,10 @@ exports.savePage = function (name, value, callback) {
 
         newWiki.save(function(err) {
             if (err){
-                throw err;  
+                callback(err);
             }
         });
     }
+    callback(err);
   });
 };

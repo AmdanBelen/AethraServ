@@ -16,7 +16,7 @@ html
             if html
               |!{html}
             br
-            a(href=wiki.edit_url) Edit #{wiki.curr_path} 
+            a(href="/" + name + "/edit") Edit #{wiki.curr_path} 
             |&nbsp;or 
-            a(href=wiki.new_url) Create a new post
+            a(href="/" + name + "/edit") Create a new post
     include ../footer.pug

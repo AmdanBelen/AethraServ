@@ -5,19 +5,11 @@ html
     include ../simple_header.pug
     section#one.main.style1.special
       .container
-        form(method="post", action=wiki.curr_url)
+        h2 #{title}
+        form(method="post", action="/" + name)
           .row.uniform(class='50%')  
-            div(class='6u 12u$(xsmall)')
-              label(For="") Title
-              input(type="text", name="title", value=title, placeholder="Title", required)
-            div(class='6u 12u$(xsmall)')
-              label(for="") Path
-              if is_new
-                input(type="text", name="path", value=wiki.curr_path, placeholder="Path", required)
-              else
-                input(type="text", readonly="true", value=wiki.curr_path, placeholder="Path", required)
             div(class='12u 12u$(xsmall)')
-              textarea(name="markdown", placeholder="HTML Article", required) #{markdown}
+              textarea(name="markdown", placeholder="Markdown Text", required) #{markdown}
             div(class='12u$')
                 ul.actions
                   li

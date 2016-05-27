@@ -32,13 +32,13 @@ module.exports = function(passport){
   router.get('/:page', function (req, res) {
     DB.loadPage(req.params.name, function (err, page) {
       if (err) return next(err);
-      res.render('view', page);
+      res.render('wiki/view', page);
     });
   });
   router.get('/:page/edit', function (req, res) {
     DB.loadPage(req.params.name, function (err, page) {
       if (err) return next(err);
-      res.render('edit', page);
+      res.render('wiki/edit', page);
     });
   });
   router.post('/:page', function (req, res) {

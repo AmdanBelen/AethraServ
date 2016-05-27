@@ -7,16 +7,16 @@ html
       .container
          #content
           article
-            header
-              h2 #{title}
-              if subtitle
-                p #{subtitle}
-            span.image.featured
-              img(src='images/banner.jpg', alt='')
-            if html
-              |!{html}
-            br
-            a(href="/" + name + "/edit") Edit #{wiki.curr_path} 
-            |&nbsp;or 
-            a(href="/" + name + "/edit") Create a new post
+            if exists
+              header
+                h2 #{title}
+                if subtitle
+                  p #{subtitle}
+              span.image.featured
+                img(src='images/banner.jpg', alt='')
+                |!{body}
+              br
+              a(href="/" + name + "/edit") Edit 
+            else
+              a(href="/" + name + "/edit") Create a new post
     include ../footer.pug

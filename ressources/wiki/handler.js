@@ -13,9 +13,6 @@ exports.loadPage = function (name, callback) {
       exists=true;
       Wiki.page = name;
       Wiki.text = value;
-    } else {
-      markdown = "# " + name.replace(/_/g, " ") +
-          "\n\n" + "This page does not exist yet.";
     }
     var tree = Markdown.parse(markdown);
     var title = name;

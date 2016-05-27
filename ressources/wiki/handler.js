@@ -43,7 +43,7 @@ exports.savePage = function (name, value, callback) {
         return done(err);
     }
     if (wik) {
-        Wiki.page = name;
+        //Wiki.page = name;
         Wiki.text = value;
         Wiki.save();
         //}else return done(null, false, req.flash('message', 'User exists, use edit'));  

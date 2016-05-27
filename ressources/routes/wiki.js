@@ -30,21 +30,21 @@ module.exports = function(passport){
     res.render('wiki/index',{title:'test'});
   });
   router.get('/:page', function (req, res) {
-    DB.loadPage(req.params.name, function (err, page) {
+    DB.loadPage(req.params.page, function (err, page) {
       if (err) return next(err);
       res.render('wiki/view', page);
     });
   });
   router.get('/:page/edit', function (req, res) {
-    DB.loadPage(req.params.name, function (err, page) {
+    DB.loadPage(req.params.page, function (err, page) {
       if (err) return next(err);
       res.render('wiki/edit', page);
     });
   });
   router.post('/:page', function (req, res) {
-    DB.savePage(req.params.name, req.body.markdown, function (err) {
+    DB.savePage(req.params.page, req.body.markdown, function (err) {
       if (err) return next(err)
-      res.redirect("/" + req.params.name);
+      res.redirect("/" + req.params.page);
     });
   });
 

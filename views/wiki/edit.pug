@@ -14,8 +14,10 @@ html
                 ul.actions
                   li
                     input.special(type="submit", value="Save")
-    script(src='/js/markdown.js')
+    
     //script
       |$("#markdown").markdown({autofocus:false,savable:false})
-
     include ../footer.pug
+    script 
+      |(function($){jQuery=$})(jQuery);
+    script(src='/js/markdown.js')

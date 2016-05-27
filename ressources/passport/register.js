@@ -15,10 +15,10 @@ module.exports = function(passport){
                         return done(err);
                     }
                     if (user) {
-                        User.permission = req.body.permission;
-                        User.firstName = req.body.firstName;
-                        User.lastName = req.body.lastName;
-                        User.save();
+                        user.permission = req.body.permission;
+                        user.firstName = req.body.firstName;
+                        user.lastName = req.body.lastName;
+                        user.save();
                         //}else return done(null, false, req.flash('message', 'User exists, use edit'));  
                     } else {
                         var newUser = new User();

@@ -9,7 +9,7 @@ html
         form(method="post", action="/" + name)
           .row.uniform(class='50%')  
             div(class='12u 12u$(xsmall)')
-              textarea#markdown(name="markdown", placeholder="Markdown Text", required) #{markdown}
+              textarea#markdown(name="markdown", placeholder="Markdown Text", data-provide="markdown", rows="10", required) #{markdown}
             div(class='12u$')
                 ul.actions
                   li

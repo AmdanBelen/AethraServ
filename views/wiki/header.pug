@@ -1,6 +1,59 @@
 section#header
+    nav.nav.nav-is-visible#nav
+      a.icon.fa-times.nav-trigger#nav-trigger(href="#nav")
+      ul
+        //li
+          a.icon.fa-times.nav-trigger(href="#nav")
+            span Close
+        li
+          a.icon.fa-home(href='/') 
+            span Home      
+        li
+          a.icon.fa-flask(href='/test')
+            span Test      
+        li
+          a.icon.fa-file-text-o(href='/article')
+            span Article      
+        li
+          a.icon.fa-user(href='/me')
+            span Me     
+        li
+          a.icon.fa-exclamation-triangle(href='/404')
+            span 404     
+        li
+          a.icon.fa-question(href='#')
+            span #  
+        li.login     
+          a.icon.fa-user(href='#')
+            if isAuthenticated
+              span Me
+              .login-window
+                form(method='get' action='/logout')
+                  .row.uniform(class='50%')
+                    div(class='12u$')
+                        ul.actions
+                          li
+                            input.special(type='submit', value='Logout')
+            else
+              span Login
+              .login-window
+                form(method='post', action='/login')
+                  .row.uniform(class='50%')
+                    div(class='12u 12u$(xsmall)')
+                      input#login-email(type='email', name='username', value='', placeholder='Email')
+                    div(class='12u$ 12u$(xsmall)')
+                      input#login-pwd(type='password', name='password', value='', placeholder='Password')
+                    div(class='12u$')
+                      ul.actions
+                        li
+                          input.special(type='submit', value='Login')
+                    if LoginMessage
+                      .error-message #{LoginMessage}
+
+
+
       .inner
         a.icon.major.fa-cloud(href='../')
           span.label Home
         h1
-          strong AETHRAWIKI
+          strong AETHRA - WIKI

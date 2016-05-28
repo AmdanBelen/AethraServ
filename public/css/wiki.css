@@ -3048,23 +3048,9 @@
 .nav{
   z-index: 5;
   top: 0;
-  margin-top:-8em;
+  margin-top:0;
   left:0;
-  background-color:transparent;
-}
-
-.nav.nav-is-visible {
-  margin-top:0px;
   background-color:#1473a6;
-}
-
-.nav-is-visible #nav-trigger {
-  margin-top:-5em;
-  float:left;
-}
-
-.nav.nav-is-visible > ul {
-  visibility: visible;
 }
 
 .nav > ul {

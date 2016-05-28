@@ -3,22 +3,13 @@ nav.nav#nav
     li
       a.icon.fa-home(href='/') 
         span Home      
-    li
+    //li
       a.icon.fa-flask(href='/test')
         span Test      
-    li
-      a.icon.fa-file-text-o(href='/article')
-        span Article      
-    li
-      a.icon.fa-user(href='/me')
-        span Me     
-    li
-      a.icon.fa-exclamation-triangle(href='/404')
-        span 404     
-    li
-      a.icon.fa-question(href='#')
-        span #  
-    li.login     
+    li.login
+      a.icon.major.fa-cloud(href='../')
+        span Aethra   
+    //li.login     
       a.icon.fa-user(href='#')
         if isAuthenticated
           span Me
@@ -47,7 +38,7 @@ nav.nav#nav
 
 
 section#header
-  .inner
+  //.inner
     a.icon.major.fa-cloud(href='../')
       span.label Home
     h1

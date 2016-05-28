@@ -2855,7 +2855,7 @@
 		padding: 50px 0 0 0;
 		background-color: #4686a0;
 		color: rgba(255, 255, 255, 0.75);
-		min-height:200px;
+		height:300px;
 		background-attachment: fixed,							fixed,							fixed;
 		background-image: url("images/overlay2.png"), url("images/overlay3.svg"), linear-gradient(45deg, #59bae4 5%, #1473a6 30%, #0c4462);
 		background-position: top left,						center center,					center center;
@@ -3269,7 +3269,7 @@
 /* Footer */
 
 	#footer {
-		padding: 5em 0 5em 0 ;
+		padding: 3em 0 0 0 ;
 		background-color: #4686a0;
 		color: rgba(255, 255, 255, 0.75);
 		background-attachment: fixed,							fixed,							fixed;

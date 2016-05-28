@@ -14,6 +14,7 @@ exports.loadPage = function (name, callback) {
       markdown=wik.text;
     }else{
       markdown = "# " + name.replace(/_/g, " ") +"\n\n" + "This page does not exist yet.";
+      callback(404,{name:name,exists:exists});
     }
     var tree = Markdown.parse(markdown);
     var title = name;

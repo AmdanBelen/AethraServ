@@ -65,7 +65,7 @@ var admin = require('./ressources/routes/admin')(passport);
 var wiki = require('./ressources/routes/wiki')(passport);
 var api = require('./ressources/routes/api')(passport);
 var tinyurl = require('./ressources/routes/tinyurl')(passport);
-var tinyurl = require('./ressources/routes/sub')(passport);
+var sub = require('./ressources/routes/sub')(passport);
 app.use('/api',api);
 app.use('/admin', admin);
 app.use(vhost('sub.aethra.io',sub));

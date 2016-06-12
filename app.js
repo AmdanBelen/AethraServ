@@ -68,7 +68,7 @@ var tinyurl = require('./ressources/routes/tinyurl')(passport);
 var tinyurl = require('./ressources/routes/sub')(passport);
 app.use('/api',api);
 app.use('/admin', admin);
-app.use(vhost('sub.aethra.io',sub);
+app.use(vhost('sub.aethra.io',sub));
 app.use(vhost('api.aethra.io',api));
 app.use(vhost('url.aethra.io',tinyurl));
 app.use(vhost('wiki.aethra.io', wiki));

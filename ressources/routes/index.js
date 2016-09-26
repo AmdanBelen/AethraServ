@@ -1,5 +1,6 @@
 var express = require('express');
-var router = express.Router();
+var router  = express.Router();
+var path    = require("path");
 
 var isAuthenticated = function (req, res, next) {
   // if user is authenticated in the session, call the next() to call the next request handler 
@@ -47,6 +48,9 @@ module.exports = function(passport){
       }
       res.send('Email Sent');
     });
+  });
+  router.get('/googlebb3d7421a06181c9.html', function (req,res){
+    res.sendFile(path.join(__dirname+'/public/googlebb3d7421a06181c9.html'));
   });
 
   router.post('/login', passport.authenticate('login', {
